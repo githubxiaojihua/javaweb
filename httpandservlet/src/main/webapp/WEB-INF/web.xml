@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+
+    <display-name>Archetype Created Web Application</display-name>
+
+  <!-- 不同的URL可以对应相同的servlet， -->
+
+  <servlet>
+    <servlet-name>helloservlet</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C01HelloServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>helloservlet</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>servletDemo</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C02ServletDemo</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>servletDemo</servlet-name>
+    <url-pattern>/servletDemo</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>servletLift</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C02ServletLeftTime</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>servletLift</servlet-name>
+    <url-pattern>/servletLift</url-pattern>
+  </servlet-mapping>
+
+  <!-- load-on-startup 指定启动加载的顺序，默认情况下服务器启动是不加载SERVLET -->
+  <!-- load-on-startup 等有先后顺序的-->
+  <servlet>
+    <servlet-name>servletStart</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C03ServletStart</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>servletStart</servlet-name>
+    <url-pattern>/servletStart</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>secondStart</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C04ServletStart2</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>secondStart</servlet-name>
+    <url-pattern>/secondStart</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>servletConfig</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C05ServletConfig</servlet-class>
+    <!-- 初始化参数 -->
+    <init-param>
+      <param-name>code</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>db</param-name>
+      <param-value>oracle</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>servletConfig</servlet-name>
+    <url-pattern>/servletConfig</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,12 @@
+本例主要是对于http&servlet章节的一个简单的实例
+使用servlet以及jdbc实现简单的登录验证。
+
+
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `pass` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8

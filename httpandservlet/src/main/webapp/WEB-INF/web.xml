@@ -36,7 +36,7 @@
   </servlet-mapping>
 
   <!-- load-on-startup 指定启动加载的顺序，默认情况下服务器启动是不加载SERVLET -->
-  <!-- load-on-startup 等有先后顺序的-->
+  <!-- load-on-startup 等子属性是有先后顺序的-->
   <servlet>
     <servlet-name>servletStart</servlet-name>
     <servlet-class>com.xiaojihua.servlet.C03ServletStart</servlet-class>

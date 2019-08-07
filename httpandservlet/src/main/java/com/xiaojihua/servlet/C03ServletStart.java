@@ -6,6 +6,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 
+/**
+ * 默认servlet不会跟随服务器启动而初始化的
+ * 通过在web.xml中设置load-on-startup参数来实现。
+ * 并且可以根据参数的大小来决定初始化的顺序，数值越小那么优先级越高
+ */
 public class C03ServletStart implements Servlet {
 
     @Override

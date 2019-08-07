@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Enumeration;
 
+/**
+ * servletConfig对象API
+ */
 public class C05ServletConfig extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

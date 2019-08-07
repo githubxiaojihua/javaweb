@@ -10,6 +10,7 @@
   <modules>
     <module>httpandservlet</module>
     <module>httpservletproject</module>
+      <module>httpservletproject1</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

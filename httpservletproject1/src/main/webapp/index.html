@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>案例一：记录访问次数</h2>
+	<a href="/demo1/count">记录访问次数</a><br>
+	<a href="/demo1/show">查看访问次数</a>
+	<h2>案例二：下载功能实现</h2>
+	<h3>超链接方式</h3>
+	<!-- <a href="/day1001/1.html">html下载</a><br>
+	<a href="/day1001/1.jpg">jpg下载</a><br>
+	<a href="/day1001/1.txt">txt下载</a><br>
+	<a href="/day1001/1.zip">zip下载</a><br>
+	<a href="/day1001/1.xlsx">xlsx下载</a><br> -->
+	<!-- 代码方式 -->
+	<a href="/demo1/down?fileName=1.html">html下载</a><br>
+	<a href="/demo1/down?fileName=1.jpg">jpg下载</a><br>
+	<a href="/demo1/down?fileName=1.txt">txt下载</a><br>
+	<a href="/demo1/down?fileName=1.zip">zip下载</a><br>
+	<a href="/demo1/down?fileName=1.xlsx">xlsx下载</a><br>
+	<h2>案例三：验证码切换</h2>
+	<img id="imgId" alt="" src="/day1001/code" onclick="changeImg()">
+</body>
+<script type="text/javascript">
+	function changeImg(){
+		//alert("111");
+		//获取图片对象
+		var imgObj=document.getElementById("imgId");
+		//操作src属性
+		imgObj.src="/day1001/code?date="+new Date();
+	}
+</script>
+</html>

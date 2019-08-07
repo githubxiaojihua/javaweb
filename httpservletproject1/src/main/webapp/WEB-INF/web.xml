@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!-- 通过两个servlet来演示共享，一个servlet用来记录访问次数，另一个servlet用来展示
+   访问次数-->
+  <servlet>
+    <servlet-name>count</servlet-name>
+    <servlet-class>com.xiaojihua.countshow.C01CountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>count</servlet-name>
+    <url-pattern>/count</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>show</servlet-name>
+    <servlet-class>com.xiaojihua.countshow.C02ShowCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>show</servlet-name>
+    <url-pattern>/show</url-pattern>
+  </servlet-mapping>
+
+  <!-- 下载 -->
+  <servlet>
+    <servlet-name>down</servlet-name>
+    <servlet-class>com.xiaojihua.downLoad.C01DownLoadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>down</servlet-name>
+    <url-pattern>/down</url-pattern>
+  </servlet-mapping>
+</web-app>

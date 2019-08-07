@@ -77,4 +77,78 @@
     <servlet-name>servletConfig</servlet-name>
     <url-pattern>/servletConfig</url-pattern>
   </servlet-mapping>
+
+  <!-- servletContext相关API -->
+  <servlet>
+    <servlet-name>servletContextApi</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C06ServletContextApi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletContextApi</servlet-name>
+    <url-pattern>/servletContextApi</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+    <param-name>db</param-name>
+    <param-value>mysql</param-value>
+  </context-param>
+  <context-param>
+    <param-name>code</param-name>
+    <param-value>iso-8859-1</param-value>
+  </context-param>
+  
+  <!-- Servlet之间共享数据 -->
+  <servlet>
+    <servlet-name>gx1</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C07ServletGX1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>gx1</servlet-name>
+    <url-pattern>/gx1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>gx2</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C08ServletGX2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>gx2</servlet-name>
+    <url-pattern>/gx2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>gx3</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C09ServletGX3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>gx3</servlet-name>
+    <url-pattern>/gx3</url-pattern>
+  </servlet-mapping>
+
+  <!-- 关于重定向 -->
+  <servlet>
+    <servlet-name>redirictOne</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C10RedirictOne</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>redirictOne</servlet-name>
+    <url-pattern>/redirictOne</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>redirictTwo</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C11RedirictTwo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>redirictTwo</servlet-name>
+    <url-pattern>/redirictTwo</url-pattern>
+  </servlet-mapping>
+
+  <!-- servlet输出流和中文乱码处理-->
+  <servlet>
+    <servlet-name>servletOut</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C12OutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletOut</servlet-name>
+    <url-pattern>/servletOut</url-pattern>
+  </servlet-mapping>
 </web-app>

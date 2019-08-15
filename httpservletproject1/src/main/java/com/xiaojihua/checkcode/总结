@@ -1,0 +1,3 @@
+验证码实现：
+使用CodeServlet生成内存图片，前端展示的时候直接将img的src内容指向
+此servlet就行。

@@ -22,15 +22,20 @@
 	<a href="/demo1/down?fileName=1.zip">zip下载</a><br>
 	<a href="/demo1/down?fileName=1.xlsx">xlsx下载</a><br>
 	<h2>案例三：验证码切换</h2>
-	<img id="imgId" alt="" src="/day1001/code" onclick="changeImg()">
+	<img id="imgId" alt="" src="/demo1/code" onclick="changeImg()">
 </body>
 <script type="text/javascript">
+    /**
+	 * 点击验证码刷新，为了每次请求servlet都是作为一次新的请求来对待
+	 * 因此需要每次请求的URL都不一样，做法就是在URL后面增加
+	 * 一个每次都不一样的参数即可
+     */
 	function changeImg(){
 		//alert("111");
 		//获取图片对象
 		var imgObj=document.getElementById("imgId");
 		//操作src属性
-		imgObj.src="/day1001/code?date="+new Date();
+		imgObj.src="/demo1/code?date="+new Date();
 	}
 </script>
 </html>

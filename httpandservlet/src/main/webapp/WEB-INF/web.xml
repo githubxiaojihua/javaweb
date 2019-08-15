@@ -151,4 +151,64 @@
     <servlet-name>servletOut</servlet-name>
     <url-pattern>/servletOut</url-pattern>
   </servlet-mapping>
+
+  <!-- request 请求行API -->
+  <servlet>
+    <servlet-name>requestApi</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C13RequestApiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>requestApi</servlet-name>
+    <url-pattern>/requestApi</url-pattern>
+  </servlet-mapping>
+
+  <!-- request 请求头API -->
+  <servlet>
+    <servlet-name>requestHeaderApi</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C14RequestHeaderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>requestHeaderApi</servlet-name>
+    <url-pattern>/header</url-pattern>
+  </servlet-mapping>
+
+  <!-- request 请求体API -->
+  <servlet>
+    <servlet-name>requestBodyApi</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C15RequestBodyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>requestBodyApi</servlet-name>
+    <url-pattern>/body</url-pattern>
+  </servlet-mapping>
+
+  <!-- request 乱码解决方案 -->
+  <servlet>
+    <servlet-name>luanma</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C17LuanMaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>luanma</servlet-name>
+    <url-pattern>/luanma</url-pattern>
+  </servlet-mapping>
+
+  <!-- request 请求转发 -->
+  <servlet>
+    <servlet-name>me</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C18Redirect.C01MeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>me</servlet-name>
+    <url-pattern>/me</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>bzr</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C18Redirect.C02BzrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bzr</servlet-name>
+    <url-pattern>/bzr</url-pattern>
+  </servlet-mapping>
+
 </web-app>

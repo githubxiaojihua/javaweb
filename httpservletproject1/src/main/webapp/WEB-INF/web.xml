@@ -32,4 +32,14 @@
     <servlet-name>down</servlet-name>
     <url-pattern>/down</url-pattern>
   </servlet-mapping>
+
+  <!-- 验证码切换 -->
+  <servlet>
+    <servlet-name>code</servlet-name>
+    <servlet-class>com.xiaojihua.checkcode.CodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>code</servlet-name>
+    <url-pattern>/code</url-pattern>
+  </servlet-mapping>
 </web-app>

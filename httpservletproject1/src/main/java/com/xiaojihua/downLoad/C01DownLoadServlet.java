@@ -33,7 +33,19 @@ public class C01DownLoadServlet extends HttpServlet {
 
         //设置下载相应头，如果不设置是无法做到统一格式的。
         response.setHeader("content-type",mimeType);
-        response.setHeader("content-disposition","attachment;filename=" + fileName);
+        //response.setHeader("content-disposition","attachment;filename=" + fileName);
+
+        /*
+            当下载的文件名称含有中文的时候，会出现乱码，或者直接只是显示“down”
+            而且不同的浏览器乱码情况不一样，
+            这是因为不同的浏览器对于汉字的编码是不一样的。比如
+            火狐浏览器对于中文使用的是base64编码方式
+            谷歌使用的是URL的编码方式
+         */
+        //获取浏览器内核
+        String agent = request.getHeader("user-agent");
+        //根据浏览器内核使用自建工具类处理中文名称
+        response.setHeader("content-disposition","attachment;filename=" + DownLoadUtils.getName(agent,"智力游戏"));
 
         //读取文件内容输出到输出流，提供下载
         InputStream in = context.getResourceAsStream("/" + fileName);

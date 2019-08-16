@@ -211,4 +211,70 @@
     <url-pattern>/bzr</url-pattern>
   </servlet-mapping>
 
+  <!-- cookie -->
+  <servlet>
+    <servlet-name>cookie</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C19Cookies.C01CookieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cookie</servlet-name>
+    <url-pattern>/cookie</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>getCookie</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C19Cookies.C02GetCookieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getCookie</servlet-name>
+    <url-pattern>/getCookie</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>cookieTime</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C19Cookies.C03CookieTimeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cookieTime</servlet-name>
+    <url-pattern>/cookieTime</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>path</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C19Cookies.C04CookiePathSetServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>path</servlet-name>
+    <url-pattern>/path</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>kill</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C19Cookies.C05KillCookieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>kill</servlet-name>
+    <url-pattern>/kill</url-pattern>
+  </servlet-mapping>
+
+  <!-- session -->
+  <servlet>
+    <servlet-name>session</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C20SessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>session</servlet-name>
+    <url-pattern>/session</url-pattern>
+  </servlet-mapping>
+
+  <!-- cookie的小例子 -->
+  <servlet>
+    <servlet-name>lastTime</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.C21CaseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>lastTime</servlet-name>
+    <url-pattern>/lastTime</url-pattern>
+  </servlet-mapping>
+
 </web-app>

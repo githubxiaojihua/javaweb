@@ -115,7 +115,7 @@ font {
 				<font>会员登录</font><%=request.getAttribute("msg")==null?"":request.getAttribute("msg") %>
 
 				<div>&nbsp;</div>
-<form class="form-horizontal" action="/demo2/login" method="post">
+<form class="form-horizontal" action="/day1201/login" method="post">
   
  <div class="form-group">
     <label for="username" class="col-sm-2 control-label">用户名</label>
@@ -132,10 +132,10 @@ font {
    <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">验证码</label>
     <div class="col-sm-3">
-      <input type="text" class="form-control" id="inputPassword3" placeholder="请输入验证码">
+      <input type="text" class="form-control" name="yzm" id="inputPassword3" placeholder="请输入验证码">
     </div>
     <div class="col-sm-3">
-      <img src="./image/captcha.jhtml"/>
+      <img src="/day1201/code"/>
     </div>
     
   </div>

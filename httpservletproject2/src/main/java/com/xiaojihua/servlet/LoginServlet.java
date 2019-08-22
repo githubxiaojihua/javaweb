@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
 		//获取请求的用户名和密码
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+
 		//创建LoginService
 		LoginService ls = new LoginService();
 		try {
@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
 				//不能使用重定向，因为使用重定向后request失效
 				//response.sendRedirect("/day1102/login.jsp");
 			}else{
+				request.getSession().setAttribute("username",user.getUsername());
 				response.getWriter().println(user.getUsername()+":欢迎回来");
 			}
 		} catch (SQLException e) {

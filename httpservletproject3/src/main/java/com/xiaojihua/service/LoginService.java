@@ -6,14 +6,10 @@ import com.xiaojihua.dao.LoginDao;
 import java.sql.SQLException;
 
 public class LoginService {
-    public User getUserByUserNameAndPass(String userName,String pass){
+    public User getUserByUserNameAndPass(String userName,String pass) throws SQLException{
         LoginDao dao = new LoginDao();
         User user = null;
-        try{
-            user = dao.getUserByUserNameAndPassword(userName,pass);
-        }catch(SQLException exception){
-            System.out.println(exception);
-        }
+        user = dao.getUserByUserNameAndPassword(userName,pass);
         return user;
     }
 }

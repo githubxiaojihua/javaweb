@@ -13,6 +13,8 @@
       <module>httpservletproject1</module>
       <module>httpservletproject2</module>
       <module>httpservletproject3</module>
+      <module>jsp</module>
+      <module>jspdemo1</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

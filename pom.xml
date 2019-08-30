@@ -15,6 +15,7 @@
       <module>httpservletproject3</module>
       <module>jsp</module>
       <module>jspdemo1</module>
+      <module>jspeljstl</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

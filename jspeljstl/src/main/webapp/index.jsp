@@ -10,8 +10,8 @@
 <h2>el</h2>
 <a href="/jspeljstl/demo1.jsp">获取简单数据</a><br>
 <a href="/jspeljstl/demo2.jsp">获取复杂数据</a><br>
-<a href="/day14/demo3.jsp">执行运算</a><br>
-<a href="/day14/demo4.jsp?username=tom&passwodr=123&hobby=smoking&hobby=tHead">获取前台的请求参数</a>
+<a href="${pageContext.request.contextPath}/demo3.jsp">执行运算</a><br>
+<a href="${pageContext.request.contextPath}/demo4.jsp?username=tom&passwodr=123&hobby=smoking&hobby=tHead">获取前台的请求参数</a>
 <h2>jstl</h2>
 <a href="${pageContext.request.contextPath}/demo5.jsp">jstl if基本应用</a><br>
 <a href="${pageContext.request.contextPath}/demo6.jsp">jstl foreach基本应用</a><br>

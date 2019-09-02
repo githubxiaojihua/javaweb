@@ -12,6 +12,7 @@
     <title>Insert title here</title>
 </head>
 <body>
+    <!-- el表达式获取复杂属性 -->
     <%
         //定义数组
         String[] strArr = new String[]{"aa","bb","cc"};

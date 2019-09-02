@@ -16,6 +16,8 @@
       <module>jsp</module>
       <module>jspdemo1</module>
       <module>jspeljstl</module>
+      <module>filter</module>
+      <module>filterproject1</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

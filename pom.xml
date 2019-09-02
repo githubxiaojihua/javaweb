@@ -18,6 +18,7 @@
       <module>jspeljstl</module>
       <module>filter</module>
       <module>filterproject1</module>
+      <module>filterproject2</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

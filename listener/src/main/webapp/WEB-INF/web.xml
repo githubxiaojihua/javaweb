@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Archetype Created Web Application</display-name>
+
+ <!-- &lt;!&ndash; 注册servletContextlistener，监听servletContext对象的创建和销毁 &ndash;&gt;
+  <listener>
+    <listener-class>com.xiaojihua.listener.C01ServletContextListener</listener-class>
+  </listener>
+  &lt;!&ndash; 注册servletrequestListener，监听request的创建和销毁 &ndash;&gt;
+  <listener>
+    <listener-class>com.xiaojihua.listener.C02ServletRequestListener</listener-class>
+  </listener>
+
+  &lt;!&ndash; 注册httpsessionlistener，监听httpsession的创建和销毁 &ndash;&gt;
+  <listener>
+    <listener-class>com.xiaojihua.listener.C03HttpSessionListener</listener-class>
+  </listener>-->
+
+  <!-- 注册serletContextAttributeListener，监听servletContext中属性的增加修改和删除 -->
+  <listener>
+    <listener-class>com.xiaojihua.attr.C01ServletContextAttrListener</listener-class>
+  </listener>
+</web-app>

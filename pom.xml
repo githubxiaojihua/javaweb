@@ -19,6 +19,8 @@
       <module>filter</module>
       <module>filterproject1</module>
       <module>filterproject2</module>
+      <module>listener</module>
+      <module>listenerproject1</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

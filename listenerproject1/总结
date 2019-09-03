@@ -3,3 +3,16 @@
 
 需要用到邮件服务器软件，设置好两个客户账号和一个管理员账号
 然后再foxmail客户端设置好邮件邮件地址就可以发送和接收了
+
+CREATE TABLE USER(
+			id INT PRIMARY KEY AUTO_INCREMENT,
+			username VARCHAR(20),
+			birthday DATE,
+			email VARCHAR(60)
+		);
+
+		INSERT INTO USER VALUES(NULL,'tom','1990-10-31','tom@sstt.com');
+		INSERT INTO USER VALUES(NULL,'jerry','1921-10-31','jerry@sstt.com');
+		INSERT INTO USER VALUES(NULL,'sunquan','221-11-18','sunquan@sstt.com');
+
+		SELECT * FROM USER

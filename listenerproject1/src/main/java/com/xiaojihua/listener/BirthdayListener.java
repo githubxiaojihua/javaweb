@@ -45,8 +45,8 @@ public class BirthdayListener implements ServletContextListener {
             }
             //注销这一句是调用了DateUtils的一些方法设置了从第二天凌晨0点开始，每隔一天的时间执行任务
             //这里为了测试使用后面那一句
-        //},DateUtils.getDelayTime(),DateUtils.getOneDay());
-        },4000,1000);
+        },DateUtils.getDelayTime(),DateUtils.getOneDay());
+        //},4000,1000);
     }
 
     @Override

@@ -6,10 +6,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 	<table border="1px" align="center">
+		<tr align="right">
+			<td colspan="8">
+				<form id="search" action="${pageContext.request.contextPath}/product" method="post">
+					<input type="hidden" name="method" value="select"/>
+					名称：<input type="text" name="name" value="${name}"/>
+					关键字：<input type="text" name="kw" value="${kw}"/>
+					<input type="submit" value="提交"/>
+				</form>
+			</td>
+			<td colspan="1"><input type="button" value="删除勾选" id="btn"></td>
+		</tr>
 		<tr>
+
+			<th width="4%"><input type="checkbox" id="delAll"/> </th>
 			<th width="8%">商品图片</th>
 			<th width="8%">商品id</th>
 			<th width="8%">商品名称</th>
@@ -25,8 +39,12 @@
 			</tr>
 		</c:if>
 		<c:if test="${not empty list}">
+			<form id="actForm" action="${pageContext.request.contextPath}/product">
+				<input type="hidden" name="method" value="delSel"/>
 			<c:forEach items="${list}" var="pro">
+
 				<tr>
+					<td width="4%"><input type="checkbox"  name="id" value="${pro.pid}" /></td>
 					<td><img src="${pageContext.request.contextPath}/${pro.pimage}" height="75px"/></td>
 					<td>${pro.pid}</td>
 					<td>${pro.pname}</td>
@@ -42,6 +60,7 @@
 					</td>
 				</tr>
 			</c:forEach>
+			</form>
 		</c:if>
 	</table>
 </body>
@@ -54,5 +73,14 @@
 			location.href = "${pageContext.request.contextPath}/product?method=delete&pid="+id;
 		}
 	}
+
+	$(function(){
+	    $("#delAll").change(function(){
+	        $("[name='id']").prop("checked",$(this).prop("checked"));
+		});
+	    $("#btn").click(function(){
+	        $("#actForm").submit();
+		});
+	});
 </script>
 </html>

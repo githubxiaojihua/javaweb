@@ -7,6 +7,7 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDao {
@@ -47,5 +48,29 @@ public class ProductDao {
         String sql = "delete from productforjdbc where pid = ?";
 
         qr.update(sql, pid);
+    }
+
+    public void deleteProSel(String pid) throws SQLException {
+        QueryRunner query = new QueryRunner();
+        String sql = "delete from productforjdbc where pid = ?";
+        query.update(DataSourcesUtils.getConnection(),sql,pid);
+
+    }
+
+    public List<Product> select(String name, String kw) throws SQLException {
+        QueryRunner query = new QueryRunner(DataSourcesUtils.getDataSource());
+        StringBuffer sb = new StringBuffer("select * from productforjdbc where 1=1");
+        List<String> tj = new ArrayList<>();
+        if(!"".equals(name)){
+            sb.append(" and pname like ?");
+            tj.add("%" + name + "%");
+        }
+        if(!"".equals(kw)){
+            sb.append(" and pdesc like ?");
+            tj.add("%" + kw + "%");
+        }
+
+        List<Product> products = query.query(sb.toString(),new BeanListHandler<Product>(Product.class),tj.toArray());
+        return products;
     }
 }

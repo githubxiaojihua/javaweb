@@ -2,6 +2,7 @@ package com.xiaojihua.servlet;
 
 import com.xiaojihua.bean.Product;
 import com.xiaojihua.service.ProductService;
+import com.xiaojihua.utils.DataSourcesUtils;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
@@ -38,6 +39,12 @@ public class ProductServlet extends HttpServlet {
         }
         if("delete".equals(method)){
             deletePro(request,response);
+        }
+        if("delSel".equals(method)){
+            deleteSel(request,response);
+        }
+        if("select".equals(method)){
+            select(request,response);
         }
 
     }
@@ -139,6 +146,36 @@ public class ProductServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
             request.setAttribute("msg", "删除商品失败");
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+        }
+    }
+
+    private void deleteSel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try{
+            String[] ids = request.getParameterValues("id");
+            ProductService ps = new ProductService();
+            ps.deleteProSel(ids);
+            request.getRequestDispatcher("/product?method=findAll").forward(request,response);
+        }catch(Exception e){
+            e.printStackTrace();
+            request.setAttribute("msg","批量删除失败！");
+            request.getRequestDispatcher("/error.jsp").forward(request,response);
+        }
+    }
+
+    private void select(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String kw = request.getParameter("kw");
+        ProductService service = new ProductService();
+        try {
+            List<Product> list = service.select(name,kw);
+            request.setAttribute("list",list);
+            request.setAttribute("name",name);
+            request.setAttribute("kw",kw);
+            request.getRequestDispatcher("/list.jsp").forward(request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "更新商品失败");
             request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }

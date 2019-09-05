@@ -2,6 +2,7 @@ package com.xiaojihua.service;
 
 import com.xiaojihua.bean.Product;
 import com.xiaojihua.dao.ProductDao;
+import com.xiaojihua.utils.DataSourcesUtils;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -31,5 +32,28 @@ public class ProductService {
     public void deletePro(String pid) throws SQLException {
         ProductDao pd = new ProductDao();
         pd.deletePro(pid);
+    }
+
+    public void deleteProSel(String[] ids) throws SQLException {
+        if(ids != null){
+            try{
+                DataSourcesUtils.beginTransaction();
+                ProductDao dao = new ProductDao();
+                for(String id : ids){
+                    dao.deleteProSel(id);
+                }
+                //int i = 1/0;
+                DataSourcesUtils.commitAndClose();
+            }catch(Exception e){
+                e.printStackTrace();
+                DataSourcesUtils.rollbackAndClose();
+                throw e;
+            }
+        }
+    }
+
+    public List<Product> select(String name, String kw) throws SQLException {
+        ProductDao dao = new ProductDao();
+        return dao.select(name,kw);
     }
 }

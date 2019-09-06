@@ -1,5 +1,6 @@
 package com.xiaojihua.servlet;
 
+import com.xiaojihua.bean.PageBean;
 import com.xiaojihua.bean.Product;
 import com.xiaojihua.service.ProductService;
 import com.xiaojihua.utils.DataSourcesUtils;
@@ -45,6 +46,9 @@ public class ProductServlet extends HttpServlet {
         }
         if("select".equals(method)){
             select(request,response);
+        }
+        if("page".equals(method)){
+            selectPage(request,response);
         }
 
     }
@@ -176,6 +180,21 @@ public class ProductServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("msg", "更新商品失败");
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+        }
+    }
+
+    private void selectPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String pageNumberStr = request.getParameter("pageNumber");
+        String pageSizeStr = request.getParameter("pageSize");
+        ProductService service = new ProductService();
+        try {
+            PageBean<Product> pageBean = service.selectPage(pageNumberStr,pageSizeStr);
+            request.setAttribute("page",pageBean);
+            request.getRequestDispatcher("/listPage.jsp").forward(request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "查询商品失败!");
             request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }

@@ -8,6 +8,7 @@
 </head>
 <body>
 <a href="${pageContext.request.contextPath}/product?method=findAll">查询所有商品</a><br>
-<a href="${pageContext.request.contextPath}/product?method=addUI">添加商品</a>
+<a href="${pageContext.request.contextPath}/product?method=addUI">添加商品</a><br>
+<a href="${pageContext.request.contextPath}/product?method=page&pageNumber=1">分页查询</a>
 </body>
 </html>

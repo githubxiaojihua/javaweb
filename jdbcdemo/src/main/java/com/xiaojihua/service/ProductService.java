@@ -1,5 +1,6 @@
 package com.xiaojihua.service;
 
+import com.xiaojihua.bean.PageBean;
 import com.xiaojihua.bean.Product;
 import com.xiaojihua.dao.ProductDao;
 import com.xiaojihua.utils.DataSourcesUtils;
@@ -55,5 +56,21 @@ public class ProductService {
     public List<Product> select(String name, String kw) throws SQLException {
         ProductDao dao = new ProductDao();
         return dao.select(name,kw);
+    }
+
+    public PageBean<Product> selectPage(String pageNumberStr,String pageSizeStr) throws SQLException {
+        int pageNumber = 1;
+        int pageSize = 3;
+        if(pageNumberStr!="" && pageNumberStr != null){
+            pageNumber = Integer.parseInt(pageNumberStr);
+        }
+        if(pageSizeStr!="" && pageSizeStr != null){
+            pageSize = Integer.parseInt(pageSizeStr);
+        }
+        PageBean<Product> pageBean = new PageBean<>(pageNumber,pageSize);
+        ProductDao dao = new ProductDao();
+        pageBean = dao.selectPage(pageBean);
+        pageBean.setTotalNumber(dao.getRecordNum());
+        return pageBean;
     }
 }

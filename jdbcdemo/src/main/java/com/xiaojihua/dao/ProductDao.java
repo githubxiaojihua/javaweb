@@ -1,10 +1,12 @@
 package com.xiaojihua.dao;
 
+import com.xiaojihua.bean.PageBean;
 import com.xiaojihua.bean.Product;
 import com.xiaojihua.utils.DataSourcesUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -72,5 +74,21 @@ public class ProductDao {
 
         List<Product> products = query.query(sb.toString(),new BeanListHandler<Product>(Product.class),tj.toArray());
         return products;
+    }
+
+    public PageBean<Product> selectPage(PageBean pageBean) throws SQLException {
+        QueryRunner query = new QueryRunner(DataSourcesUtils.getDataSource());
+        String sql = "select * from productforjdbc limit ?,?";
+        List<Product> pros = query.query(sql,new BeanListHandler<Product>(Product.class),pageBean.getStartIndex(),pageBean.getPageSize());
+        pageBean.setData(pros);
+        return pageBean;
+    }
+
+    public int getRecordNum() throws SQLException {
+        QueryRunner query = new QueryRunner(DataSourcesUtils.getDataSource());
+        String sql = "select count(*) from productforjdbc ";
+        //这个地方要现转换成Long然后再转成int
+        int count = ((Long)query.query(sql, new ScalarHandler())).intValue();
+        return count;
     }
 }

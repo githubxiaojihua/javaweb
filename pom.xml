@@ -22,6 +22,7 @@
       <module>listener</module>
       <module>listenerproject1</module>
       <module>jdbcdemo</module>
+      <module>ajaxandjquery</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+      <servlet-name>demo1Servlet</servlet-name>
+      <servlet-class>com.xiaojihua.servlet.AjaxJqueryDemo1Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demo1Servlet</servlet-name>
+    <url-pattern>/demo1</url-pattern>
+  </servlet-mapping>
+  <!-- filter基本 -->
+  <filter>
+    <filter-name>demo1Filter</filter-name>
+    <filter-class>com.xiaojihua.servlet.Demo1Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>demo1Filter</filter-name>
+    <url-pattern>/demo1</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>demo2Servlet</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.Demo2Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demo2Servlet</servlet-name>
+    <url-pattern>/demo2</url-pattern>
+  </servlet-mapping>
+  <!-- filter声明周期 -->
+  <filter>
+    <filter-name>demo2Filter</filter-name>
+    <filter-class>com.xiaojihua.servlet.Demo2Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>demo2Filter</filter-name>
+    <url-pattern>/demo2</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>demo3Servlet</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.Demo3Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demo3Servlet</servlet-name>
+    <url-pattern>/demo3</url-pattern>
+  </servlet-mapping>
+  <!-- filter声明周期 -->
+  <filter>
+    <filter-name>demo3Filter</filter-name>
+    <filter-class>com.xiaojihua.servlet.Demo3Filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>demo3Filter</filter-name>
+    <url-pattern>/demo3</url-pattern>
+  </filter-mapping>
+  <!-- filter声明周期 -->
+  <filter>
+    <filter-name>demo4Filter</filter-name>
+    <filter-class>com.xiaojihua.servlet.Demo4Filter</filter-class>
+  </filter>
+  <!-- 如果将这个mapping移动到demo3Filter mapping之上那么就会先执行demo4filter -->
+  <filter-mapping>
+    <filter-name>demo4Filter</filter-name>
+    <url-pattern>/demo3</url-pattern>
+  </filter-mapping>
+
+
+  <servlet>
+    <servlet-name>demo4Servlet</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.Demo4Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demo4Servlet</servlet-name>
+    <url-pattern>/demo4</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>demo5Filter</filter-name>
+    <filter-class>com.xiaojihua.servlet.Demo5Filter</filter-class>
+  </filter>
+  <!-- 通过设置servlet-name来指定过滤的servlet -->
+  <filter-mapping>
+    <filter-name>demo5Filter</filter-name>
+    <servlet-name>demo4Servlet</servlet-name>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>demo5Servlet</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.Demo5Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demo5Servlet</servlet-name>
+    <url-pattern>/demo5</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>demo6Servlet</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.Demo6Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demo6Servlet</servlet-name>
+    <url-pattern>/demo6</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>demo6Filter</filter-name>
+    <filter-class>com.xiaojihua.servlet.Demo6Filter</filter-class>
+  </filter>
+  <!-- 通过设置servlet-name来指定过滤的servlet -->
+  <filter-mapping>
+    <filter-name>demo6Filter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <!-- 设置过滤从浏览器发送过来的请求，默认值 -->
+    <dispatcher>REQUEST</dispatcher>
+    <!-- 设置过滤请求转发过来的请求 -->
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.jsp</location>
+  </error-page>
+
+
+  <servlet>
+    <servlet-name>demo7Servlet</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.Demo7Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demo7Servlet</servlet-name>
+    <url-pattern>/demo7</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+    <filter-name>demo7Filter</filter-name>
+    <filter-class>com.xiaojihua.servlet.Demo7Filter</filter-class>
+    <init-param>
+      <param-name>db</param-name>
+      <param-value>oracle</param-value>
+    </init-param>
+    <init-param>
+      <param-name>code</param-name>
+      <param-value>GBK</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>demo7Filter</filter-name>
+    <url-pattern>/demo7</url-pattern>
+  </filter-mapping>
+</web-app>

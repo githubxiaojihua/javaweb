@@ -1,0 +1,24 @@
+使用jsp查询数据库表中的所有商品，在jsp中展示
+
+
+用到的表
+		create database day13;
+		use day13;
+		-- 简易商品表
+		create table product(
+			id int primary key auto_increment,
+			pname varchar(20),
+			price double,
+			pdesc varchar(20)
+		);
+
+		insert into product values (null,'电视机',3200,'液晶曲面大电视');
+		insert into product values (null,'韭菜盒子',3,'味重请小心食用');
+		insert into product values (null,'益达',10,'韭菜伴侣');
+		insert into product values (null,'十三香',12,'守义牌');
+
+		-- 商品实体字段
+		private int id;
+		private String pname;
+		private double price;
+		private String pdesc;

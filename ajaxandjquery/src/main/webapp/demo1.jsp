@@ -13,6 +13,7 @@
 
 </form>
 </body>
+<!-- 原生的ajax -->
 <script type="text/javascript">
     /**
      * 向服务器发送get请求
@@ -58,7 +59,7 @@
         xmlHttp.send("userName=张三&pass=123");
         //接收结果(回调函数)
         xmlHttp.onreadystatechange = function(){
-            alert(111111);
+            //alert(111111);
             if(xmlHttp.readyState==4 && xmlHttp.status==200){
                 alert(xmlHttp.responseText);
             }

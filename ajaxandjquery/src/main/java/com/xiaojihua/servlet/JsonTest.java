@@ -1,5 +1,7 @@
 package com.xiaojihua.servlet;
 
+import com.google.gson.Gson;
+import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -42,6 +44,11 @@ public class JsonTest {
         map.put("qq","QQ");
         JSONObject jsonObject = JSONObject.fromObject(map);
         System.out.println(jsonObject);
+
+        //测试使用gson
+        Gson gson = new Gson();
+        String gStr = gson.toJson(map);
+        System.out.println(gStr);
     }
 
     @Test

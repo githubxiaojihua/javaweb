@@ -10,4 +10,13 @@
     <servlet-name>userServlet</servlet-name>
     <url-pattern>/userServlet</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>kwServlet</servlet-name>
+    <servlet-class>com.xiaojihua.servlet.KwServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>kwServlet</servlet-name>
+    <url-pattern>/kwServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -8,27 +8,31 @@
 	src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$("#tid").keyup(function(){
-			//发送ajax
-			$.post("${pageContext.request.contextPath}/kw","kwname="+$("#tid").val(),function(obj){
-				$("#did").html("");
-				//alert(obj);
-				//遍历obj
-				if(obj!=""){
-					$(obj).each(function(){
-						//this
-						//alert(this);
-						$("#did").append("<div onmouseover='over(this)' onmouseout='out(this)'>"+this+"</div>");
-						$("#did").show();
-					})
-				}else{
-					//alert("1111");
-					$("#did").hide();
-				}
-				
-			},"json");
-		})
-	})
+	    $("#tid").keyup(function(){
+	        $.ajax({
+				url:"${pageContext.request.contextPath}/kwServlet",
+				type:"post",
+				data:"kwName=" + $("#tid").val(),
+				success:function(obj){
+                    $("#did").html("");
+				    if(obj != ""){
+                        $(obj).each(function(index,ele){
+                            $("#did").append("<div onmousemove='mouseOn(this)' onmouseout='mouseOut(this)' onclick='mouseClick(this)'>" + this + "</div>");
+                        });
+                        $("#did").show();
+
+					}else{
+                        $("#did").hide();
+					}
+
+				},
+				error:function(e){
+				    alert(obj);
+				},
+				dataType:"json"
+			});
+		});
+	});
 </script>
 <title>Insert title here</title>
 </head>
@@ -44,12 +48,17 @@
 	</center>
 </body>
 <script type="text/javascript">
-	function over(obj){
-		$(obj).css("background-color","gray");
+	function mouseOn(obj){
+	    $(obj).css("background-color","gray");
 	}
-	
-	function out(obj){
-		$(obj).css("background-color","white");
+
+	function mouseOut(obj){
+        $(obj).css("background-color","white");
+	}
+
+	function mouseClick(obj){
+	    $("#tid").val($(obj).text());
+	    $("#did").hide().html("");
 	}
 </script>
 </html>

@@ -16,6 +16,8 @@ import java.util.Map;
  * 主要包括JSONArray和JSONObject两个对象
  * 前一个是用来转换数组或者是list的
  * 后一个是用来转换map或者是javaBean的
+ *
+ * 使用Gson来操作json
  */
 public class JsonTest {
 

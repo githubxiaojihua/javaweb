@@ -1,0 +1,6 @@
+[
+	{"id":1,"pname":"apple","price":2000,"image":"img/1.jpg"},
+	{"id":2,"pname":"sanxing","price":2000,"image":"img/1.jpg"},
+	{"id":3,"pname":"vivo","price":2000,"image":"img/1.jpg"},
+	{"id":4,"pname":"oppo","price":2000,"image":"img/1.jpg"}
+]

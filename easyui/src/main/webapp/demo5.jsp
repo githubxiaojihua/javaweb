@@ -11,23 +11,37 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.easyui.min.js"></script>
 </head>
 <script type="text/javascript">
-    //使用动态属性操作，为tabs创建一个新的选项卡，并增加内容
-    //如果已经存在名称为新增选项卡的tab则不再新增而是选中
+    //使用动态属性操作，为表格设计数据
     $(function(){
         $("#dg").datagrid({
             url:"${pageContext.request.contextPath}/json1.json",
             columns:[[
-                {field:'code',title:'Code',width:100},
-                {field:'name',title:'Name',width:100},
-                {field:'price',title:'Price',width:100,align:'right'}
-            ]]
+                {field:'id',title:'商品编号',width:100},
+                {field:'pname',title:'商品名称',width:100},
+                {field:'price',title:'商品价格',width:100,align:'right'},
+                {field:'image',title:'商品图片',width:100,
+                    //每一列的格式化参数用于对与某一列进行自定义格式化
+                    formatter:function(value,row,index){
+                        //格式化图片显示样式，因为默认的话只是显示图片路径，应该使用img进行包裹
+                        //return "<img width=20px height=20px src='"+ value +"'/>";
+                        return "<a href='#'>修改</a>--<a href='#'>删除</a>";
+                    }
+                }
+            ]],
+            //显示斑马线
+            striped:true,
+            //显示分页控件
+            pagination:true,
+            //每页显示条数
+            pageList:[2,3,4,5,6,7,8]
         });
     });
 </script>
 <body>
     <!-- 使用fitColumns属性可以让datagrid自适应，但是必须再th上增加width来规定个个列的占比-->
+    <!-- 通过js来操作的时候可以不用使用class属性来指定是easyui -->
     <table id="dg" class="easyui-datagrid" data-options="fitColumns:true">
-        <thead>
+        <%--<thead>
         <tr>
             <th width="20px" data-options="field:'code'">编码</th>
             <th width="20px" data-options="field:'name'">名称</th>
@@ -36,7 +50,7 @@
         </thead>
         <tbody>
 
-        </tbody>
+        </tbody>--%>
     </table>
 
 </body>

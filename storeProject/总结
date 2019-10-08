@@ -1,0 +1,6 @@
+
+store项目
+1、自定义首页的好处，在最外层的index.jsp中描述。
+2、抽取了baseServlet
+3、面向接口编程，dao层和service层都是面向接口开发。
+4、使用了标准版的乱码处理filter

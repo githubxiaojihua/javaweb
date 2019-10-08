@@ -1,0 +1,29 @@
+<c3p0-config>
+	<!-- 默认配置，如果没有指定则使用这个配置 -->
+	<default-config><!-- 默认配置 -->
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<!-- 解决往数据库中写汉字乱码的问题，只要保证，服务器，客户端的编码一直就不会出现乱码 -->
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/store?useUnicode=true&amp;characterEncoding=utf8</property>
+		<property name="user">root</property>
+		<property name="password">root</property>
+		<property name="initialPoolSize">10</property>
+	</default-config>
+
+
+	<!-- 命名的配置 -->
+	<named-config name="itcast">
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/xxxx</property>
+		<property name="user">root</property>
+		<property name="password">1234</property>
+
+
+		<!-- 如果池中数据连接不够时一次增长多少个 -->
+		<property name="acquireIncrement">5</property>
+		<property name="initialPoolSize">20</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxPoolSize">40</property>
+		<property name="maxStatements">20</property>
+		<property name="maxStatementsPerConnection">5</property>
+	</named-config>
+</c3p0-config> 

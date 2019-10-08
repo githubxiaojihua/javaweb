@@ -29,6 +29,7 @@
       <module>jedis</module>
     <module>jedis</module>
       <module>javawebzengqiang</module>
+      <module>storeProject</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

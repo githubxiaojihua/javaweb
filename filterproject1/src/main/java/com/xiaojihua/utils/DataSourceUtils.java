@@ -1,4 +1,4 @@
-package com.xiaojihua.utils;
+Npackage com.xiaojihua.utils;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 

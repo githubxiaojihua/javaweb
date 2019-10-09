@@ -20,15 +20,15 @@
 		$(function(){
 		    var urlStr = "${pageContext.request.contextPath}/category";
 		    //走数据库查询
-		    //var dataStr = {method:"findAll"};
-            var dataStr = {method:"fromRedis"};
+		    var dataStr = {method:"findAll"};
+            //var dataStr = {method:"fromRedis"};
 		    $.ajax({
 				url:urlStr,
 				type:"post",
 				data:dataStr,
 				success:function(obj){
 				    $(obj).each(function(index,ele){
-						$("#menu").append("<li><a href='#'>"+ele.cname+"</a></li>");
+						$("#menu").append("<li><a href='${pageContext.request.contextPath}/product?method=findProsByCid&pageNum=1&cid=" + ele.cid + "'>"+ele.cname+"</a></li>");
 					});
 				},
 				error:function(e){

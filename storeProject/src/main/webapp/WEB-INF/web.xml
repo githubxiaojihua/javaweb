@@ -32,6 +32,17 @@
       <url-pattern>/category</url-pattern>
   </servlet-mapping>
 
+    <servlet>
+        <servlet-name>product</servlet-name>
+        <servlet-class>com.xiaojihua.web.ProductsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>product</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
+
+
   <filter>
       <filter-name>encoding</filter-name>
       <filter-class>com.xiaojihua.filter.EncodingFilter</filter-class>

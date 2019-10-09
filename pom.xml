@@ -23,6 +23,13 @@
       <module>listenerproject1</module>
       <module>jdbcdemo</module>
       <module>ajaxandjquery</module>
+      <module>ajaxjqueryproject1</module>
+      <module>easyui</module>
+      <module>jedis</module>
+      <module>jedis</module>
+    <module>jedis</module>
+      <module>javawebzengqiang</module>
+      <module>storeProject</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

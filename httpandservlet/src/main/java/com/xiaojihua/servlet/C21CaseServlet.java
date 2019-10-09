@@ -1,7 +1,5 @@
 package com.xiaojihua.servlet;
 
-import javafx.scene.input.DataFormat;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

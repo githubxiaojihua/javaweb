@@ -34,6 +34,7 @@ public class ProductsServlet extends BaseServlet {
         try {
             PageBean<Product> page = service.findProsByCid(cid,pageNum,size);
             request.setAttribute("page",page);
+            request.setAttribute("cid",cid);
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("msg","查询数据失败!");

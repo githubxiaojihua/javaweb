@@ -3,7 +3,7 @@
 	<default-config><!-- 默认配置 -->
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
 		<!-- 解决往数据库中写汉字乱码的问题，只要保证，服务器，客户端的编码一直就不会出现乱码 -->
-		<property name="jdbcUrl">jdbc:mysql://localhost:3306/store?useUnicode=true&amp;characterEncoding=utf8</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3506/store?useUnicode=true&amp;characterEncoding=utf8</property>
 		<property name="user">root</property>
 		<property name="password">root</property>
 		<property name="initialPoolSize">10</property>

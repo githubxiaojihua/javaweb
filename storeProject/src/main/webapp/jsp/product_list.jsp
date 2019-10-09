@@ -50,21 +50,54 @@
 		<!--分页 -->
 		<div style="width:380px;margin:0 auto;margin-top:50px;">
 			<ul class="pagination" style="text-align:center; margin-top:10px;">
-				<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-				<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">7</a></li>
-				<li><a href="#">8</a></li>
-				<li><a href="#">9</a></li>
-				<li>
-					<a href="#" aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
-					</a>
-				</li>
+				<!-- class="disabled" -->
+					<!-- 对上一页按钮进行判断如果当前是第一页则不允许上翻 -->
+					<c:if test="${page.pageNumber==1}">
+						<li class="disabled">
+							<a href="#" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+					</c:if>
+					<!-- 非第一页允许上翻 -->
+					<c:if test="${page.pageNumber!=1}">
+						<li>
+							<a href="${pageContext.request.contextPath}/product?method=findProsByCid&pageNum=${page.pageNumber - 1}&cid=${cid}" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+					</c:if>
+
+				<c:forEach begin="1" end="${page.totalPage}" var="pg">
+					<c:if test="${pg==page.pageNumber}">
+						<li class="active"><a href="#">${pg}</a></li>
+					</c:if>
+
+					<c:if test="${pg!=page.pageNumber}">
+						<li>
+							<a href="${pageContext.request.contextPath}/product?method=findProsByCid&pageNum=${pg}&cid=${cid}">${pg}</a>
+						</li>
+					</c:if>
+
+				</c:forEach>
+
+				<!-- 对下一页按钮进行判断如果当前页等于总页数则不允许下翻 -->
+				<c:if test="${page.pageNumber==page.totalPage}">
+					<li class="disabled">
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+				<!-- 允许下翻 -->
+				<c:if test="${page.pageNumber!=page.totalPage}">
+					<li>
+						<a href="${pageContext.request.contextPath}/product?method=findProsByCid&pageNum=${page.pageNumber + 1}&cid=${cid}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+
 			</ul>
 		</div>
 		<!-- 分页结束=======================        -->

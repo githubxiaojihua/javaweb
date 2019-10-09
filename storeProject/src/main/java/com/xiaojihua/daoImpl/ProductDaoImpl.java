@@ -38,8 +38,8 @@ public class ProductDaoImpl implements IProductDao {
     @Override
     public int recordNumber(String cid) throws SQLException {
         QueryRunner query = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "SELECT count(*) FROM product";
-        int count = ((Long)query.query(sql,new ScalarHandler())).intValue();
+        String sql = "SELECT count(*) FROM product WHERE cid=?";
+        int count = ((Long)query.query(sql,new ScalarHandler(),cid)).intValue();
         return count;
     }
 }

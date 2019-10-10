@@ -43,12 +43,22 @@
     </servlet-mapping>
 
 
-  <filter>
-      <filter-name>encoding</filter-name>
-      <filter-class>com.xiaojihua.filter.EncodingFilter</filter-class>
-  </filter>
-  <filter-mapping>
-      <filter-name>encoding</filter-name>
-      <url-pattern>/*</url-pattern>
-  </filter-mapping>
+    <!-- 使用这个filter会造成，自定义首页请求转发后获取不到method参数，而报错，具体原因待考证 -->
+  <!--<filter>-->
+      <!--<filter-name>encoding</filter-name>-->
+      <!--<filter-class>com.xiaojihua.filter.EncodingFilter</filter-class>-->
+  <!--</filter>-->
+  <!--<filter-mapping>-->
+      <!--<filter-name>encoding</filter-name>-->
+      <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
+
+    <filter>
+        <filter-name>encoding</filter-name>
+        <filter-class>com.xiaojihua.filter.MyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

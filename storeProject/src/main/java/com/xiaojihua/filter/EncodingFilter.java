@@ -10,6 +10,7 @@ import java.util.Map;
 
 /**
  * 统一编码
+ * 这个过滤器有个问题
  * @author Administrator
  *
  */
@@ -26,7 +27,6 @@ public class EncodingFilter implements Filter {
 		//1.强转
 		HttpServletRequest request=(HttpServletRequest) req;
 		HttpServletResponse response=(HttpServletResponse) resp;
-		
 		//2.放行
 		chain.doFilter(new MyRequest(request), response);
 	}
@@ -50,7 +50,7 @@ class MyRequest extends HttpServletRequestWrapper{
 	}
 	
 	@Override
-	public String getParameter(String name) {  
+	public String getParameter(String name) {
 		if(name==null || name.trim().length()==0){
 			return null;
 		}

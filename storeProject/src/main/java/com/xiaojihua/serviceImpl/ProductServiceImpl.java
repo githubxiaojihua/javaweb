@@ -7,6 +7,7 @@ import com.xiaojihua.domain.Product;
 import com.xiaojihua.service.IProductService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class ProductServiceImpl implements IProductService {
 
@@ -34,5 +35,42 @@ public class ProductServiceImpl implements IProductService {
         int recordCount = dao.recordNumber(cid);
         page.setTotalNumber(recordCount);
         return page;
+    }
+
+    /**
+     * 根据pid查询产品详情
+     * @param pid
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public Product findByPid(String pid) throws SQLException {
+        IProductDao dao = new ProductDaoImpl();
+        Product product = dao.findByPid(pid);
+        return product;
+    }
+
+    /**
+     * 查询热门商品
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public List<Product> findHot() throws SQLException {
+        IProductDao dao = new ProductDaoImpl();
+        List<Product> hotList = dao.findHotList();
+        return hotList;
+    }
+
+    /**
+     * 查询最新商品
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public List<Product> findNew() throws SQLException {
+        IProductDao dao = new ProductDaoImpl();
+        List<Product> newList = dao.findNewList();
+        return newList;
     }
 }

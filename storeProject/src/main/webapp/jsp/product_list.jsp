@@ -36,10 +36,10 @@
 			<c:if test="${not empty page.data}">
 				<c:forEach items="${page.data}" var="product">
 					<div class="col-md-2">
-						<a href="product_info.htm">
+						<a href="${pageContext.request.contextPath}/product?method=findByPid&pid=${product.pid}">
 							<img src="${pageContext.request.contextPath}/${product.pimage}" width="170" height="170" style="display: inline-block;">
 						</a>
-						<p><a href="product_info.html" style='color:green'>${product.pname}</a></p>
+						<p><a href="${pageContext.request.contextPath}/product?method=findByPid&pid=${product.pid}" style='color:green'>${product.pname}</a></p>
 						<p><font color="#FF0000">商城价：&yen;${product.shop_price}</font></p>
 					</div>
 				</c:forEach>

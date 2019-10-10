@@ -32,6 +32,7 @@ public class BaseServlet extends HttpServlet {
         Class clazz = this.getClass();
         try {
             //获取请求的方法
+            String method1 = request.getParameter("method");
             Method method = clazz.getDeclaredMethod(request.getParameter("method"),HttpServletRequest.class,HttpServletResponse.class);
             //调用请求的方法（由子类servlet自己实现），并且接收返回URL作为请求转发的URL
             String url = (String) method.invoke(this,request,response);

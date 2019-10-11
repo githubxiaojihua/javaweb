@@ -28,6 +28,7 @@
       <module>jedis</module>
       <module>javawebzengqiang</module>
       <module>storeProject</module>
+      <module>selfIOC</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

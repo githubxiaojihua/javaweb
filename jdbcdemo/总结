@@ -9,7 +9,8 @@
 location.href = "${pageContext.request.contextPath}/product?method=delete&pid="+id;
 
 4、增加了批量删除和模糊查询
-5、增加了分页查询功能，为了区分采用了分离的listPge.jsp页面以及方法
+5、增加了分页查询功能，为了区分采用了分离的listPge.jsp页面以及方法，
+使用了pageBean以及自定义的分页组件（上一页下一页以及每一页）
 
 
 

@@ -51,8 +51,12 @@ public class MyFilter implements Filter
 							{
 								// 以前方法调用后的乱码
 								String s =(String)method.invoke(request, args);
-								// 增强--解决乱码
-								s=new String(s.getBytes("iso8859-1"),"utf-8");
+								//防止要获取的参数不在request中
+								if(s != null){
+									// 增强--解决乱码
+									s=new String(s.getBytes("iso8859-1"),"utf-8");
+								}
+
 								return s;
 							}
 							

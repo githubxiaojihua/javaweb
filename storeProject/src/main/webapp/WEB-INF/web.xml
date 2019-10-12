@@ -41,7 +41,25 @@
         <servlet-name>product</servlet-name>
         <url-pattern>/product</url-pattern>
     </servlet-mapping>
+    
+  <servlet>
+      <servlet-name>cart</servlet-name>
+      <servlet-class>com.xiaojihua.web.CartServlet</servlet-class>
+  </servlet>  
+   
+  <servlet-mapping>
+      <servlet-name>cart</servlet-name>
+      <url-pattern>/cart</url-pattern>
+  </servlet-mapping>
 
+  <servlet>
+      <servlet-name>order</servlet-name>
+      <servlet-class>com.xiaojihua.web.OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>order</servlet-name>
+      <url-pattern>/order</url-pattern>
+  </servlet-mapping>
 
     <!-- 使用这个filter会造成，自定义首页请求转发后获取不到method参数，而报错，具体原因待考证 -->
   <!--<filter>-->

@@ -1,5 +1,6 @@
 package com.xiaojihua.serviceImpl;
 
+import com.xiaojihua.bean.PageBean;
 import com.xiaojihua.dao.IOrderDao;
 import com.xiaojihua.daoImpl.OrderDaoImpl;
 import com.xiaojihua.domain.Orders;
@@ -38,5 +39,48 @@ public class OrderServiceImpl implements IOrderService {
         }
 
 
+    }
+
+    /**
+     * 查询当前登录用户的订单数据
+     */
+    @Override
+    public PageBean<Orders> findOrder(String uid, PageBean pageBean) throws Exception {
+        IOrderDao orderDao = new OrderDaoImpl();
+        PageBean<Orders> page = orderDao.findOrder(uid, pageBean);
+        return page;
+    }
+
+    /**
+     * 查询当前用户的订单数量
+     * @param uid
+     * @return
+     */
+    public int recordNum(String uid) throws SQLException{
+        IOrderDao orderDao = new OrderDaoImpl();
+        return orderDao.recordNum(uid);
+    }
+
+    /**
+     * 根据oid查询订单数据
+     * @param oid
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Orders findOrderByOID(String oid) throws Exception {
+        IOrderDao orderDao = new OrderDaoImpl();
+        return orderDao.findOrderByOID(oid);
+    }
+
+    /**
+     * 更改订单
+     * @param orders
+     * @throws SQLException
+     */
+    @Override
+    public void updateOder(Orders orders) throws SQLException {
+        IOrderDao dao = new OrderDaoImpl();
+        dao.updateOrder(orders);
     }
 }

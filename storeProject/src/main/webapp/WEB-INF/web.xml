@@ -79,4 +79,16 @@
         <filter-name>encoding</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <!-- 权限过滤器 -->
+    <filter>
+        <filter-name>qxfilter</filter-name>
+        <filter-class>com.xiaojihua.filter.QxFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>qxfilter</filter-name>
+        <url-pattern>/jsp/order_info.jsp</url-pattern>
+        <url-pattern>/jsp/order_list.jsp</url-pattern>
+    </filter-mapping>
 </web-app>

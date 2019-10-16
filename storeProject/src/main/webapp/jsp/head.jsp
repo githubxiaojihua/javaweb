@@ -59,7 +59,7 @@
 						<li>欢迎你:${user.name}用户</li>
 						<!-- 先访问servlet 通过servlet在转发给web-inf下 -->
 						<!-- 以后最好不要jsp访问jsp了 要先访问servlet 通过servlet在访问jsp -->
-						<li><a href="#">我的订单</a></li>
+						<li><a href="${pageContext.request.contextPath}/order?method=findOrder&pageNum=1">我的订单</a></li>
 						<li><a href="cart.htm">购物车</a></li>
 						<li><a href="${pageContext.request.contextPath}/user?method=quit">退出</a></li>
 					</ol>

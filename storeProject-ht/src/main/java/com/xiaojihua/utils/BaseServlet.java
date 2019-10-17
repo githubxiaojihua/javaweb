@@ -20,8 +20,8 @@ public class BaseServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response){
 
-        //解决响应乱码
-        response.setCharacterEncoding("UTF-8");
+//        //解决响应乱码移动到filter统一解决
+//        response.setCharacterEncoding("UTF-8");
         /**
          * 实现根据请求中的方法参数，来动态的调用对应的方法，而且编码一次即可
          */

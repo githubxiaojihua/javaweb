@@ -12,13 +12,15 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.easyui.min.js"></script>
 </head>
 <body>
+<!-- 布局容器 -->
 <div id="cccc" class="easyui-layout" data-options="fit:true">
     <div data-options="region:'north',title:'北',split:true" style="height:230px;">
         <!-- 公司的图片logo -->
-        <img src="${pageContext.request.contextPath}/image/itheima.bmp" style="height:190px;width:100%" />
+        <%--<img src="${pageContext.request.contextPath}/image/itheima.bmp" style="height:190px;width:100%" />--%>
     </div>
+
     <div data-options="region:'west',title:'西',split:true" style="width:350px;">
-        <!-- 折叠窗 -->
+        <!-- 菜单折叠窗 -->
         <div class="easyui-accordion" data-options="fit:true,border:0">
             <div title="JAVA">
                 <!-- 树 -->
@@ -27,7 +29,10 @@
                         <span>商品分类管理</span>
                         <ul>
                             <li>
-                                <span><a href="#" onclick="addTabs()">商品分类列表</a></span>
+                                <!-- 此处a标签如果href是#的话那么会导致点击菜单打开子页面后
+                                     浏览器的地址栏中最后出现一个#
+                                 -->
+                                <span><a href="javascript:void(0);" onclick="addTabs()">商品分类列表</a></span>
                             </li>
                         </ul>
                     </li>
@@ -47,6 +52,8 @@
             <div title="PHP">333</div>
         </div>
     </div>
+
+
     <div data-options="region:'center'">
         <!-- 选项卡 -->
         <div id="tabsss" class="easyui-tabs" data-options="fit:true,border:0">
@@ -57,6 +64,11 @@
 
 
 <script>
+    /**
+     * 增加tab页面，点击菜单的时候判断
+     * 是否已经打开了页面，如果打开则跳
+     * 到那个页面，如果没有打开则新增
+     */
     function addTabs()
     {
         // 先判断选项卡中是否有指定的选项卡
@@ -76,7 +88,6 @@
                     href:"category_list.jsp"
                 })
         }
-
     }
 </script>
 

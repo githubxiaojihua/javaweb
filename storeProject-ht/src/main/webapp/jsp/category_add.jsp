@@ -22,7 +22,7 @@
 <script>
     function submitForm(){
         $('#category_add').form('submit',{
-            url:"${pageContext.request.contextPath}/category",
+            url:"${pageContext.request.contextPath}/categoryht",
             onSubmit:function(param){
                 param.method="saveCategory";
             },

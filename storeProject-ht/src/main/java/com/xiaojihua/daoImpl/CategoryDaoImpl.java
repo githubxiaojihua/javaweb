@@ -48,4 +48,28 @@ public class CategoryDaoImpl implements ICategoryDao {
         String sql = "DELETE FROM category WHERE cid=?";
         query.update(sql,cid);
     }
+
+    /**
+     * 保存类目信息
+     * @param cateGory
+     * @throws SQLException
+     */
+    @Override
+    public void save(CateGory cateGory) throws SQLException {
+        QueryRunner query = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "INSERT INTO category VALUES(?,?)";
+        query.update(sql,cateGory.getCid(),cateGory.getCname());
+    }
+
+    /**
+     * 更新类目名称
+     * @param cateGory
+     * @throws SQLException
+     */
+    @Override
+    public void update(CateGory cateGory) throws SQLException {
+        QueryRunner query = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "UPDATE category SET cname=? WHERE cid=?";
+        query.update(sql,cateGory.getCname(),cateGory.getCid());
+    }
 }

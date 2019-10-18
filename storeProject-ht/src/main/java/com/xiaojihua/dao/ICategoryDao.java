@@ -10,4 +10,6 @@ public interface ICategoryDao {
     EasyuiPageBean<CateGory> findCategory(EasyuiPageBean pageBeans) throws SQLException;
     int recordCount() throws SQLException;
     void deleteByCid(String cid) throws SQLException;
+    void save(CateGory cateGory) throws SQLException;
+    void update(CateGory cateGory) throws SQLException;
 }

@@ -32,7 +32,7 @@
                                 <!-- 此处a标签如果href是#的话那么会导致点击菜单打开子页面后
                                      浏览器的地址栏中最后出现一个#
                                  -->
-                                <span><a href="javascript:void(0);" onclick="addTabs()">商品分类列表</a></span>
+                                <span><a href="javascript:void(0);" onclick="addTabs('商品分类列表','category_list.jsp')">商品分类列表</a></span>
                             </li>
                         </ul>
                     </li>
@@ -41,7 +41,7 @@
                         <span>商品信息管理</span>
                         <ul>
                             <li>
-                                <span><a href="#">商品信息列表</a></span>
+                                <span><a href="javascript:void(0);" onclick="addTabs('商品信息列表','product_list.jsp')">商品信息列表</a></span>
                             </li>
                         </ul>
                     </li>
@@ -69,23 +69,23 @@
      * 是否已经打开了页面，如果打开则跳
      * 到那个页面，如果没有打开则新增
      */
-    function addTabs()
+    function addTabs(tabName,url)
     {
         // 先判断选项卡中是否有指定的选项卡
-        var flg=$("#tabsss").tabs("exists","商品类别展示");
+        var flg=$("#tabsss").tabs("exists",tabName);
         if(flg)
         {
             // 有---跳过去
-            $("#tabsss").tabs("select","商品类别展示");
+            $("#tabsss").tabs("select",tabName);
         }else
         {
             // 没有--创建
             $("#tabsss").tabs("add",
                 {
-                    title:"商品类别展示",
+                    title:tabName,
                     closable:true,
                     /* 引入页面内容 */
-                    href:"category_list.jsp"
+                    href:url
                 })
         }
     }

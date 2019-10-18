@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 
-public class MyFilter implements Filter
+public class MyFilterHt implements Filter
 {
 
 	@Override
@@ -50,7 +50,7 @@ public class MyFilter implements Filter
 						{
 							// 知道getParameter使用的是哪个提交方式 
 							String m = request.getMethod();
-							String name = request.getParameter("method");
+							//String name = request.getParameter("method");
 							// 判断是get还是post
 							if("get".equalsIgnoreCase(m))
 							{
@@ -64,11 +64,11 @@ public class MyFilter implements Filter
 
 								return s;
 							}
-							
+
 							if("post".equalsIgnoreCase(m))
 							{
 								request.setCharacterEncoding("utf-8");
-								
+
 							}
 						}
 						

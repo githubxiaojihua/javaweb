@@ -2,10 +2,12 @@ package com.xiaojihua.web;
 
 import com.xiaojihua.bean.EasyuiPageBean;
 import com.xiaojihua.dao.ICategoryDao;
+import com.xiaojihua.daoImpl.CategoryDaoImpl;
 import com.xiaojihua.domain.CateGory;
 import com.xiaojihua.service.ICategoryService;
 import com.xiaojihua.serviceImpl.CategoryServiceImpl;
 import com.xiaojihua.utils.BaseServlet;
+import com.xiaojihua.utils.UUIDUtils;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -71,7 +73,51 @@ public class CategoryServletHt extends BaseServlet {
      * 新增类目
      */
     public String saveCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.getWriter().print("ok");
+        try {
+            //1、获取保存的类目
+            String cName = request.getParameter("name");
+            //2、创建类目对象
+            CateGory cateGory = new CateGory();
+            cateGory.setCid(UUIDUtils.getUUID());
+            cateGory.setCname(cName);
+            //3、调用dao保存对象
+            ICategoryService service = new CategoryServiceImpl();
+            //4、写回结果信息
+            response.getWriter().print("ok");
+            service.save(cateGory);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * 更新类目
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    public String updateCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            //1、获取Cname和Cid
+            String cid = request.getParameter("cid");
+            String cname = request.getParameter("cname");
+            //2、根据Cid获取Category
+            ICategoryService service = new CategoryServiceImpl();
+            CateGory cateGory = new CateGory();
+            //原则上是应该先从数据库中获取然后再设置
+            cateGory.setCid(cid);
+            cateGory.setCname(cname);
+            //3、更改cname并且保存
+            service.update(cateGory);
+            //4、返回结果
+            response.getWriter().print("ok");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 }

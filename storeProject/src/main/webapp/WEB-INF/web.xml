@@ -24,7 +24,7 @@
 
   <servlet>
       <servlet-name>category</servlet-name>
-      <servlet-class>com.xiaojihua.web.CategoryServletHt</servlet-class>
+      <servlet-class>com.xiaojihua.web.CategoryServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

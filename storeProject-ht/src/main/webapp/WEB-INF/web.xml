@@ -15,23 +15,33 @@
 
   <!-- 类目servlet -->
   <servlet>
-    <servlet-name>categoryht</servlet-name>
-    <servlet-class>com.xiaojihua.web.CategoryServletHt</servlet-class>
-  </servlet>
-  
+  <servlet-name>categoryht</servlet-name>
+  <servlet-class>com.xiaojihua.web.CategoryServletHt</servlet-class>
+</servlet>
+
   <servlet-mapping>
     <servlet-name>categoryht</servlet-name>
     <url-pattern>/categoryht</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>productht</servlet-name>
+    <servlet-class>com.xiaojihua.web.ProductServletHt</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>productht</servlet-name>
+    <url-pattern>/productht</url-pattern>
+  </servlet-mapping>
 
   <!-- 请求和响应乱码过滤器-->
   <filter>
-    <filter-name>encoding</filter-name>
-    <filter-class>com.xiaojihua.filter.MyFilter</filter-class>
+    <filter-name>encodingHt</filter-name>
+    <filter-class>com.xiaojihua.filter.MyFilterHt</filter-class>
   </filter>
 
   <filter-mapping>
-    <filter-name>encoding</filter-name>
+    <filter-name>encodingHt</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 </web-app>

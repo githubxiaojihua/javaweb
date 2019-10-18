@@ -15,16 +15,18 @@
         $('#category_list').datagrid({
             url:"${pageContext.request.contextPath}/categoryht?method=findCategory",
             columns:[[
-                {field:'cid',title:'类目编码',width:300},
-                {field:'cname',title:'类目名称',width:200},
-                {field:'****',title:'操作',width:20,align:'right',
+                {field:'cid',title:'类目编码',width:100},
+                {field:'cname',title:'类目名称',width:100},
+                {field:'****',title:'操作',width:100,
                     formatter:function(value,row,index){
-                        return "<a href='javascript:void(0);' onclick=deleteByCid('" + row.cid + "')>删除</a>--<a href='#'>修改</a>";
+                        return "<a href='javascript:void(0);' onclick=deleteByCid('" + row.cid + "')>删除</a>" +
+                               "--" +
+                               "<a href='javascript:void(0);' onclick=updateByCid('" + row.cid + "','" + row.cname + "')>修改</a>";
                     }
                 }
             ]],
-            /*列自适应*/
-            fitColumns:true,
+            // /*列自适应*/
+            //fitColumns:true,
             /*填充满父容器*/
             fit:true,
             /*分页*/
@@ -93,7 +95,7 @@
                     // 刷新表格的最新数据
                     $("#category_list").datagrid("reload",true);
                 }else{
-                    alert(obj);
+                    alert("删除错误！");
                 }
             },
             error:function(e){
@@ -101,6 +103,21 @@
             }
             //dataType参数不指定的话默认返回类型为String
         });
+    }
+
+    /**
+     * 打开修改页面
+     * @param cid
+     * @param cname
+     */
+    function updateByCid(cid,cname){
+         $("#category_dialog").dialog({
+            width:300,
+            height:200,
+            title:"修改",
+            //通过请求参数的形式传递cid和cname
+            href:"category_update.jsp?cid="+cid + "&cname=" + cname
+         });
     }
 
 </script>

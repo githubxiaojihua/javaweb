@@ -41,4 +41,24 @@ public class CategoryServiceImpl implements ICategoryService {
         ICategoryDao dao = new CategoryDaoImpl();
         dao.deleteByCid(cid);
     }
+
+    /**
+     * 保存类目
+     * @param cateGory
+     * @throws SQLException
+     */
+    @Override
+    public void save(CateGory cateGory) throws SQLException {
+        ICategoryDao dao = new CategoryDaoImpl();
+        dao.save(cateGory);
+    }
+
+    /**
+     * 更新类目
+     */
+    @Override
+    public void update(CateGory cateGory) throws SQLException {
+        ICategoryDao dao = new CategoryDaoImpl();
+        dao.update(cateGory);
+    }
 }

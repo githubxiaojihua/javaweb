@@ -72,4 +72,10 @@ public class ProductServiceImpl implements IProductService {
         JSONArray json = JSONArray.fromObject(list);
         return json.toString();
     }
+
+    @Override
+    public void saveProduct(Product product) throws SQLException {
+        IProductDao productDao=new ProductDaoImpl();
+        productDao.saveProduct(product);
+    }
 }

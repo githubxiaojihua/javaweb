@@ -10,4 +10,5 @@ import java.sql.SQLException;
 public interface IProductService {
     EasyuiPageBean<Product> findProdut(String page, String rows) throws Exception;
     String findCategory() throws SQLException;
+    void saveProduct(Product product) throws SQLException;
 }

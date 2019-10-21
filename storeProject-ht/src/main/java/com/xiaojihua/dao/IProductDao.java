@@ -12,4 +12,5 @@ public interface IProductDao {
     List<Map<String,Object>> findProduct(int start,int size) throws SQLException;
     int recordNum() throws SQLException;
     List<CateGory> findCategory() throws SQLException;
+    void saveProduct(Product product) throws SQLException;
 }

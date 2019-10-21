@@ -6,7 +6,7 @@
 </head>
 <!-- 子页面不需要 html head body 而且如果存在以上元素，如果script文件如果写在head或者非body区域中时候是不会执行 -->
 <div style="padding:10px">
-    <form id="productAdd" method="post">
+    <form id="productAdd" method="post" action="${pageContext.request.contextPath}/addServlet" enctype="multipart/form-data">
         <table cellpadding="5">
             <tr>
                 <td>商品名称:</td>
@@ -61,7 +61,23 @@
 
 <script>
     function submitForm(){
-        $('#productAdd').form('submit');
+        $('#productAdd').form('submit',{
+            success:function(data){
+                if(data=="ok"){
+                    //隐藏dialog
+                    $("#product_dialog").dialog("close",true);
+                    //左下角提示信息
+                    $.messager.show({
+                        title:'添加商品消息',
+                        msg:'恭喜你,添加成功',
+                        timeout:5000,
+                        showType:'slide'
+                    });
+                    //刷新列表
+                    $("#product_list").datagrid("reload",true);
+                }
+            }
+        });
     }
     function clearForm(){
         $('#productAdd').form('clear');

@@ -61,7 +61,8 @@
 
 <script>
     function submitForm(){
-        $('#productAdd').form('submit');
+        $('#productAdd').form('submit',{
+        });
     }
     function clearForm(){
         $('#productAdd').form('clear');

@@ -1,0 +1,45 @@
+文件上传的实现：
+上传:
+
+	浏览器对于上传会要求3件事:
+
+			1 上传框要有name属性  name="upload"
+
+			2 表单的method必须是post   method="post"
+
+			3 表单的enctype属性必须得是 multipart/form-data
+					在表单里面有个entype属性,这个属性有一个默认值: 你写或则不写都会有
+						enctype="application/x-www-form-urlencoded"      url表单
+
+
+					 从要玩上传开始,这个属性就必须要做更改,要把这个属性改成:
+						 enctype="multipart/form-data"			多部分表单
+
+
+
+			什么是url(普通)表单? 什么是多部分表单?
+
+
+				url(普通)表单: 就是之前一直玩的
+					username=zhangsan&password=123&hobby=eat&hobby=sleep..  以url形式进行数据拼装传递的表单
+
+
+				多部分表单:
+
+					---------------------------------------
+					一部分
+
+					-----------------------------------------
+					一部分
+
+					-------------------------------------------
+					一部分
+
+
+			不论是url(普通)表单还是多部分表单,数据都在请求体
+
+
+			注意:如果是多部分的表单进行提交,之前使用的request获取数据的3种方式,全部失效
+            getParameter() getParameterMap() getValues()
+
+

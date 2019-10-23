@@ -6,3 +6,12 @@ day01:环境搭建以及简单的增删改查
     创建hibernate配置文件
     使用hibernate保存customer类
     在test包中的CustomerDemo类中的方法中展示
+
+day02:
+1、持久化类规范
+2、OID查询
+3、持久化类的三种状态
+4、一级缓存的使用和关闭
+5、持久态类的特性
+6、HQL
+7、获取与线程绑定的session

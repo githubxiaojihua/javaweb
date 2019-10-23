@@ -106,9 +106,10 @@ public class CustomerDemo {
         //开启事物
         Transaction tx = session.beginTransaction();
         //操作,修改的话是先查后改
-        Customer customer = session.get(Customer.class, 1L);
-        customer.setCust_name("张三");
-        session.save(customer);
+        Customer customer = session.get(Customer.class, 7L);
+        customer.setCust_name("张三1");
+        //session.save(customer);//save也可以达到update的效果
+        session.update(customer);
         //提交事物
         tx.commit();
         //关闭链接

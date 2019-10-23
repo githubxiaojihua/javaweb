@@ -31,6 +31,8 @@
       <module>selfIOC</module>
       <module>storeProject-ht</module>
       <module>hibernate</module>
+      <module>hibernate_guanlian</module>
+      <module>hibernate_jpa</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

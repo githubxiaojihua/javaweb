@@ -11,20 +11,11 @@ import java.util.List;
 
 public class CustomerDemoSQL {
 
-    // 原生SQL查询
+    // 原生SQL查询，待学习
     @Test
     public void test1()
     {
-        /*Session session = HibernateUtils.openSession();
-        Transaction tx = session.beginTransaction();
 
-        String sql = "SELECT * FROM cst_customer";
-        SQLQueryParser parser = new SQLQueryParser(sql);
-
-        tx.commit();
-        session.close();*/
-
-        // 只有增删改 一级oid查询 才会自动生成sql语句
     }
 
 

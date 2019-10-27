@@ -1,0 +1,7 @@
+day03:
+hibernate的关联关系
+1、一对多的关系（customer,linkman)
+2、多对多的关系 role,user
+3、级联操作
+4、对象导航查询
+5、延迟加载

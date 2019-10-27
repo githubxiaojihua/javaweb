@@ -30,9 +30,10 @@
       <module>storeProject</module>
       <module>selfIOC</module>
       <module>storeProject-ht</module>
-    <module>storeUploadProject12</module>
+      <module>storeUploadProject12</module>
       <module>hibernate</module>
-      <module>hibernate</module>
+      <module>hibernate_guanlian</module>
+      <module>hibernate_jpa</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 做类(Customer)和表(cst_customer)的映射关系 -->
+<hibernate-mapping>
+    <!--
+			class标签: 作用类和表的映射的
+		 		name:类的全限定名(cn.itcast.domain.Customer)
+		 		table:表的全名(cst_customer)
+		 -->
+    <class name="com.xiaojihua.domain.Customer" table="cst_customer">
+        <!--
+				id标签:做类中的某个属性 和 表的主键映射关系
+				 name:类的某个属性名
+				 column:表的主键字段名
+			 -->
+        <id name="cust_id" column="cust_id">
+            <!-- 做主键的增长方式的
+					  native: AUTO_INCREMENT 让主键自动增长
+
+					  native: 使用都是数据库的自增
+						 	 如果用的是mysql: auto_increment
+						 	如果用的是oracle: 序列
+
+						  uuid: 针对的是字符串类型
+						  	   自动给你生成唯一的字符串来保证oid的唯一-->
+            <generator class="native"></generator>
+        </id>
+
+        <!--
+				property标签:做其它属性和其它字段的映射关系
+				   name属性:类的其它属性名
+				   column属性:表的其它字段名
+				   ps:如果属性名和字段名一致 column可以省略不写
+				   如果length不指定的话hibernate默认创建最大长度255
+			-->
+        <property name="cust_name" column="cust_name" length="20" not-null="true" unique="true"></property>
+        <property name="cust_source" column="cust_source"></property>
+        <property name="cust_industry" column="cust_industry"></property>
+        <property name="cust_level" column="cust_level"></property>
+        <property name="cust_address" column="cust_address"></property>
+        <property name="cust_phone" column="cust_phone"></property>
+    </class>
+</hibernate-mapping>

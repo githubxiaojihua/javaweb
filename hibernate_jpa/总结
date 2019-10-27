@@ -1,0 +1,16 @@
+使用注解代替部分xml配置
+
+注解使用的是jpa规范
+jap是一套接口，hibernate实现
+
+使用jpa中规定的注解代替部分xml
+
+META-INF在maven项目下面应该放到src/main/java下面
+因为这个才是classpath
+非maven项目classpath是对应到src下面
+
+1、jpa注解代替部分xml
+2、jpa CRUD操作
+3、jap查询
+4、jpa一对多，多对多
+5、离线查询（代码还未加入进来）

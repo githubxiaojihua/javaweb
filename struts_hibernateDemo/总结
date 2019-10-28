@@ -1,0 +1,8 @@
+使用struts和hibernate建立一个简单的
+crmdemo
+
+1、搭建struts环境
+2、搭建hibernate环境
+3、拷贝前端代码
+4、实现客户列表功能
+5、在struts中获取与对象，将查询出来的list放到request中

@@ -1,0 +1,16 @@
+struts2框架
+day01
+1、struts2的基本搭建
+   引入依赖包
+   配置web.xml
+   配置struts.xml
+   写action
+   写返回jsp
+2、引入外部文件<include
+3、覆盖struts常量配置文件的方法
+4、三种Action的创建方法
+5、三种Action的访问方法
+
+
+day02
+1、struts中获取servlet api的三种方法

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+
+    <!-- 可以覆盖前面加载的配置文件内容 设置了请求的action后缀名必须是.abc-->
+    <!--<constant name="struts.action.extension" value="abc"></constant>-->
+
+    <!-- 使用动态方法 -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+
+    <!-- name: 包名 对于咱们来说意义不大 作用:给别人继承用
+	extends: 继承  默认值:默认基层struts2提供的一个包 包名:struts-default
+			 继承哪个包 那这个包下的所有东西都有一份
+
+	namespace: 名称空间   和浏览器访问地址相关
+	abstract:抽象的 默认是false 如果写成了true 代表当前的pageage下面不能出现action 他们2个是互斥的
+		     该包只能被用来继承
+	-->
+    <!--<package name="abc" extends="struts-default" namespace="/">
+        &lt;!&ndash;做action的地址访问路径
+        name:action的名字  和浏览器访问地址相关
+        namespace和name 组成了当前action的访问地址
+        class:全限定名
+        method: 可以不写 默认就是执行叫一个execute的方法
+        第一中创建Action的方式，一个普通的java类，只要有execute方法即可
+        &ndash;&gt;
+        <action name="hello" class="com.xiaojihua.struts.action.ActionDemo1">
+            <result name="abc">/jsp/demo.jsp</result>
+        </action>
+    </package>-->
+
+    <!-- 引入外部的action配置  -->
+    <!--<include file="struts_user.xml"></include>-->
+
+    <package name="test2" extends="struts-default" namespace="/">
+
+        <!-- 全局的逻辑视图页面配置  针对的是当前包下面所有的action都生效-->
+        <global-results>
+            <result name="ok">/jsp/ok.jsp</result>
+        </global-results>
+        <!-- 第二种创建action的方式，从实现Action接口 -->
+        <action name="hello2" class="com.xiaojihua.struts.action.ActionDemo2">
+            <result name="success">/jsp/demo.jsp</result>
+        </action>
+        <!-- 第二种创建action的方式，从ActionSupport继承，覆盖其execute方法 -->
+        <action name="hello3" class="com.xiaojihua.struts.action.ActionDemo3">
+        </action>
+
+        <!-- Action的3中访问方式 -->
+        <!-- 普通访问 -->
+        <!--<action name="product_save" class="com.xiaojihua.struts.action.ActionDemo4" method="save">
+        </action>
+        <action name="product_delete" class="com.xiaojihua.struts.action.ActionDemo4" method="delete">
+        </action>
+        <action name="product_update" class="com.xiaojihua.struts.action.ActionDemo4" method="update">
+        </action>
+        <action name="product_find" class="com.xiaojihua.struts.action.ActionDemo4" method="find">
+        </action>-->
+
+        <!-- 通配符访问 -->
+        <!--<action name="product_*" class="com.xiaojihua.struts.action.ActionDemo4" method="{1}">
+        </action>-->
+
+        <!-- 动态访问 -->
+        <action name="product" class="com.xiaojihua.struts.action.ActionDemo4">
+
+        </action>
+
+        <!-- 获取Servlet的API访问方式 -->
+        <!-- 通过ServletActionContext的方式获取servlet api -->
+        <action name="ad5" class="com.xiaojihua.struts.action.ActionDemo5">
+
+        </action>
+        <!-- 通过ActionContext的方式获取servlet api -->
+        <action name="ad6" class="com.xiaojihua.struts.action.ActionDemo6">
+
+        </action>
+
+    </package>
+</struts>

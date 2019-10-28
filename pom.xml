@@ -34,6 +34,8 @@
       <module>hibernate</module>
       <module>hibernate_guanlian</module>
       <module>hibernate_jpa</module>
+    <module>struts2</module>
+      <module>struts_hibernateDemo</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

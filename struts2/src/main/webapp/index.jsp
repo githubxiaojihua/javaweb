@@ -30,5 +30,8 @@
     <h2>Servlet的API访问方式(3种)</h2>
     <a href="${pageContext.request.contextPath}/jsp/form.jsp">ServletActionContext的方式</a><br/>
     <a href="${pageContext.request.contextPath}/jsp/form.jsp">ActionContext的方式</a><br/>
+    <a href="${pageContext.request.contextPath}/jsp/form.jsp">实现特定接口的方式</a><br/>
+    <a href="${pageContext.request.contextPath}/ad8">证明action是单实例还是多实例</a><br/>
+    <a href="${pageContext.request.contextPath}/ad9">result的type测试</a><br/>
 </body>
 </html>

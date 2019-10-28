@@ -78,6 +78,32 @@
         <action name="ad6" class="com.xiaojihua.struts.action.ActionDemo6">
 
         </action>
+        <!-- 通过实现不同的接口来获取servlet api -->
+        <action name="ad7" class="com.xiaojihua.struts.action.ActionDemo7">
 
+        </action>
+
+        <!-- 证明了action 是多实例 -->
+        <action name="ad8" class="com.xiaojihua.struts.action.ActionDemo8">
+
+        </action>
+
+    </package>
+
+    <package name="test3" extends="struts-default" namespace="/">
+        <action name="ad9" class="com.xiaojihua.struts.action.ActionDemo9">
+            <!-- name属性默认值是success 如果action返回的逻辑视图名是字符串:success name可以省略不写
+											  但如果是其它的 一定要写
+
+						 type:要跳转的类型
+						 	 dispatcher 默认值 用于请求转发到页面
+						 	 redirect 用于重定向到页面
+
+						 	 chain 用于请求转发到action
+						 	 redirectAction 用于重定向到action
+
+					 -->
+            <result type="redirect">/jsp/ok.jsp</result>
+        </action>
     </package>
 </struts>

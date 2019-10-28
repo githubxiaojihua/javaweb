@@ -17,17 +17,17 @@
 		
 
 			<%--ActionContext:--%>
-		<form action="${pageContext.request.contextPath}/ad6" method="post">
-			用户名:<input type="text" name="username" />
-			年龄:<input type="text" name="age" />
-			<input type="submit" value="提交" />
-		</form>
-		
-		
-		<%--<form action="${pageContext.request.contextPath}/ad3" method="post">
+		<%--<form action="${pageContext.request.contextPath}/ad6" method="post">
 			用户名:<input type="text" name="username" />
 			年龄:<input type="text" name="age" />
 			<input type="submit" value="提交" />
 		</form>--%>
+		
+		
+		<form action="${pageContext.request.contextPath}/ad7" method="post">
+			用户名:<input type="text" name="username" />
+			年龄:<input type="text" name="age" />
+			<input type="submit" value="提交" />
+		</form>
 </body>
 </html>

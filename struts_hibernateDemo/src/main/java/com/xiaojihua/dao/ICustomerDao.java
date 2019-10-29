@@ -8,4 +8,5 @@ import java.util.List;
 public interface ICustomerDao {
 
     List<Customer> findAll();
+    void add(Customer customer);
 }

@@ -33,5 +33,10 @@
     <a href="${pageContext.request.contextPath}/jsp/form.jsp">实现特定接口的方式</a><br/>
     <a href="${pageContext.request.contextPath}/ad8">证明action是单实例还是多实例</a><br/>
     <a href="${pageContext.request.contextPath}/ad9">result的type测试</a><br/>
+
+    <a href="${pageContext.request.contextPath}/jsp/form2.jsp">struts2的页面数据封装(属性方式-基本类型和String类型)</a><br/>
+    <a href="${pageContext.request.contextPath}/jsp/form2.jsp">struts2的页面数据封装(属性方式-对象类型)</a><br/>
+    <a href="${pageContext.request.contextPath}/jsp/form2.jsp">struts2的页面数据封装(属性方式-复杂类型封装)</a><br/>
+    <a href="${pageContext.request.contextPath}/jsp/form2.jsp">struts2的页面数据封装(模型封装)</a><br/>
 </body>
 </html>

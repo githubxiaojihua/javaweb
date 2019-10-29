@@ -14,4 +14,10 @@ public class CustomerServiceImp implements ICustomerService {
         ICustomerDao dao = new CustomerDaoImpl();
         return dao.findAll();
     }
+
+    @Override
+    public void add(Customer customer) {
+        ICustomerDao dao = new CustomerDaoImpl();
+        dao.add(customer);
+    }
 }

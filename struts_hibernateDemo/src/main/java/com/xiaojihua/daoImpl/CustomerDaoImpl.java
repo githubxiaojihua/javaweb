@@ -2,6 +2,7 @@ package com.xiaojihua.daoImpl;
 
 import com.xiaojihua.dao.ICustomerDao;
 import com.xiaojihua.domain.Customer;
+import com.xiaojihua.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -25,5 +26,15 @@ public class CustomerDaoImpl implements ICustomerDao {
         session.close();
         sessionFactory.close();
         return list;
+    }
+
+    @Override
+    public void add(Customer customer) {
+        Session currentSession = HibernateUtils.getCurrentSession();
+        Transaction transaction = currentSession.beginTransaction();
+
+        currentSession.save(customer);
+
+        transaction.commit();
     }
 }

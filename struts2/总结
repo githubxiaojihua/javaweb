@@ -16,3 +16,6 @@ day02
 1、struts中获取servlet api的三种方法
 2、Action是多例的，servlet是单例的
 3、resultType的四个关键属性值的测试
+4、struts2封装页面数据的几种方式：
+    属性封装：基本类型、String、对象类型、复杂类型list,map
+    模型封装。

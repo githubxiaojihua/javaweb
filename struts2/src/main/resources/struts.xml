@@ -103,7 +103,33 @@
 						 	 redirectAction 用于重定向到action
 
 					 -->
-            <result type="redirect">/jsp/ok.jsp</result>
+            <!--<result type="redirect">/jsp/ok.jsp</result>-->
+            <!-- 测试请求转发到action -->
+            <result type="chain">ad10</result>
+        </action>
+
+        <action name="ad10" class="com.xiaojihua.struts.action.ActionDemo10">
+
+        </action>
+
+        <!-- 测试struts的属性封装 基本类型和String类型 -->
+        <action name="ad11" class="com.xiaojihua.struts.action.ActionDemo11">
+
+        </action>
+
+        <!-- 测试struts的属性封装 对象类型 需要在对应的form表单中使用OGNL表达式 比如user.userName-->
+        <action name="ad12" class="com.xiaojihua.struts.action.ActionDemo12">
+
+        </action>
+
+        <!-- 测试struts的属性封装 复杂类型 list和map 需要在对应的form表单中使用OGNL表达式，比如list[0].userName-->
+        <action name="ad13" class="com.xiaojihua.struts.action.ActionDemo13">
+
+        </action>
+
+        <!-- 测试struts的属性封装 模型封装-->
+        <action name="ad14" class="com.xiaojihua.struts.action.ActionDemo14">
+
         </action>
     </package>
 </struts>

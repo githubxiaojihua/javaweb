@@ -6,6 +6,11 @@
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    <!-- 覆盖struts2的常量配置，开启ognl使用类的静态方法 -->
+    <init-param>
+      <param-name>struts.ognl.allowStaticMethodAccess</param-name>
+      <param-value>true</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
     <filter-name>struts2</filter-name>

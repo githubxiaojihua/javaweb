@@ -78,5 +78,6 @@
 
         <!-- 加载映射文件(Customer.hbm.xml)的地址 -->
         <mapping resource="com/xiaojihua/domain/Customer.hbm.xml"/>
+        <mapping resource="com/xiaojihua/domain/User.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

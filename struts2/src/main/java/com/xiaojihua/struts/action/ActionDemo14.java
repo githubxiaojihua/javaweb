@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class ActionDemo14 extends ActionSupport implements ModelDriven<User> {
 
-    //需要new出来
+    //需要new出来(User对象也将会出现在root区域)
     private User user = new User();
 
     //需要实现getModel方法

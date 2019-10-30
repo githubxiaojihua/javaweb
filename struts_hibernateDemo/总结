@@ -4,10 +4,15 @@ crmdemo
 1、搭建struts环境
 2、搭建hibernate环境
 3、拷贝前端代码
-4、实现客户列表功能
+4、实现客户列表功能，使用原始request域对象和el表达式，实现
 5、在struts中获取与对象，将查询出来的list放到request中
 6、在htm页面跳转到action：
 <TD class=menuSmall><A class=style2 href="/crm_demo/customer_addUI"
 														target=main>－ 新增客户</A></TD>
 直接写项目的绝对路径就行。
 7、新增客户，成功后跳转到客户列表
+
+8、将客户列表功能使用struts值栈和struts标签实现（ognl）
+
+9、改造login页面，使用login.jsp打开登陆页面，成功则跳转到index.htm页面，否则回到登陆页面
+给出错误提示

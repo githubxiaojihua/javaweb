@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -88,7 +89,8 @@
 													<TD>地址</TD>
 													<TD>操作</TD>
 												</TR>
-												<c:forEach items="${list }" var="customer">
+												<!-- 这是从request域中获取，通过el表达式来获取值 -->
+												<%--<c:forEach items="${list }" var="customer">
 												<TR
 													style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
 													<TD>${customer.cust_name }</TD>
@@ -103,7 +105,23 @@
 													</TD>
 												</TR>
 												
-												</c:forEach>
+												</c:forEach>--%>
+
+												<!-- 将查询出来的值放到了值栈中，通过ognl表达式来获取值 -->
+												<s:iterator value="list" var="customer">
+													<TR style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+														<TD><s:property value="#customer.cust_name"/> </TD>
+														<TD><s:property value="#customer.cust_level"/></TD>
+														<TD><s:property value="#customer.cust_source"/></TD>
+														<TD><s:property value="#customer.cust_phone"/></TD>
+														<TD><s:property value="#customer.cust_address"/></TD>
+														<TD>
+															<a href="${pageContext.request.contextPath }/customerServlet?method=edit&custId=<s:property value="#customer.cust_id"/>">修改</a>
+															&nbsp;&nbsp;
+															<a href="${pageContext.request.contextPath }/customerServlet?method=delete&custId=<s:property value="#customer.cust_id"/>">删除</a>
+														</TD>
+													</TR>
+												</s:iterator>
 
 											</TBODY>
 										</TABLE>

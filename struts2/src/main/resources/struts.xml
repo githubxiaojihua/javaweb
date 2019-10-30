@@ -131,5 +131,81 @@
         <action name="ad14" class="com.xiaojihua.struts.action.ActionDemo14">
 
         </action>
+
+        <!-- 获取值栈内部结构-->
+        <action name="ad15" class="com.xiaojihua.struts.action.ActionDemo15">
+            <result name="success">/jsp/valueStackDemo.jsp</result>
+        </action>
+
+        <!-- 通过成员属性的方式往值栈的root区域存储数据-->
+        <action name="ad16" class="com.xiaojihua.struts.action.ActionDemo16">
+            <result name="success">/jsp/valueStackDemo2.jsp</result>
+        </action>
+
+        <!-- 通过值栈api的方式往值栈的root区域存储数据-->
+        <action name="ad17" class="com.xiaojihua.struts.action.ActionDemo17">
+            <result name="success">/jsp/valueStackDemo3.jsp</result>
+        </action>
+
+        <!-- 往值栈的context区域存储数据-->
+        <action name="ad18" class="com.xiaojihua.struts.action.ActionDemo18">
+            <result name="success">/jsp/valueStackDemo4.jsp</result>
+        </action>
+
+        <!-- 特殊符号$的使用，在配置文件中获取值栈中的数据-->
+        <action name="ad19" class="com.xiaojihua.struts.action.ActionDemo19">
+            <!-- 直接从值栈中获取数据  ym =/jsp/demo7.jsp 用于下载
+                ym的值在ActionDemo19中已经通过成员属性的方式设置到了值栈中
+            -->
+            <result name="success">${ym}</result>
+        </action>
+
+
+        <!-- 页面获取数据的另一种方式通过[index]的方式来获取-->
+        <action name="ad20" class="com.xiaojihua.struts.action.ActionDemo20">
+            <result name="success">/jsp/valueStackDemo8.jsp</result>
+        </action>
+    </package>
+
+    <package name="intersceptor" extends="struts-default" namespace="/">
+        <!-- 为package包下面的所有action配置拦截器 
+             配置的时候注意如果写了default-interceptor-ref的话
+             那么原来struts默认的拦截器就被覆盖掉不执行了
+             比如modelDriven也不执行了，那就没有办法进行模型封装了
+             因此在下面的interceptor-stack中要加上
+             原来struts提供的拦截器组
+
+             全局拦截器
+        -->
+        <interceptors>
+            <interceptor name="myinterceptor1" class="com.xiaojihua.struts.interscepter.MyInterceptor1"/>
+            <interceptor name="myinterceptor2" class="com.xiaojihua.struts.interscepter.MyInterceptor2"/>
+            <interceptor name="myinterceptor3" class="com.xiaojihua.struts.interscepter.MyInterceptor3">
+                <!-- 指定不拦截的方法 -->
+                <param name="excludeMethods">findAll</param>
+            </interceptor>
+            <interceptor-stack name="myinterceptors">
+                <!-- 可以指定拦截器组，将struts的默认拦截组纳入进来 -->
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="myinterceptor1"/>
+                <interceptor-ref name="myinterceptor2"/>
+                <interceptor-ref name="myinterceptor3"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="myinterceptors"/>
+
+        <!-- 局部拦截器：也可为某一个action指定拦截器和拦截器组 -->
+        <action name="ad21" class="com.xiaojihua.struts.action.ActionDemo21">
+            <!-- 如果只定义了一个拦截器那么全局的就被覆盖，只执行这一个 -->
+            <interceptor-ref name="myinterceptor1"/>
+            <interceptor-ref name="myinterceptor2"/>
+            <result name="success">/jsp/1.jsp</result>
+        </action>
+
+        <!-- 方法拦截器 -->
+        <action name="ad22" class="com.xiaojihua.struts.action.ActionDemo22" method="findAll">
+            <interceptor-ref name="myinterceptor3"/>
+            <result name="success">/jsp/1.jsp</result>
+        </action>
     </package>
 </struts>

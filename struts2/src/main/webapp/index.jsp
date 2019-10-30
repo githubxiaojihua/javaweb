@@ -38,5 +38,27 @@
     <a href="${pageContext.request.contextPath}/jsp/form2.jsp">struts2的页面数据封装(属性方式-对象类型)</a><br/>
     <a href="${pageContext.request.contextPath}/jsp/form2.jsp">struts2的页面数据封装(属性方式-复杂类型封装)</a><br/>
     <a href="${pageContext.request.contextPath}/jsp/form2.jsp">struts2的页面数据封装(模型封装)</a><br/>
+
+    <!-- day03 -->
+    <h2>OGNL的内容</h2>
+    <a href="${pageContext.request.contextPath}/jsp/ognlDemo.jsp">OGNL的快速入门</a>
+
+    <h2>值栈内容</h2>
+    <a href="${pageContext.request.contextPath}/ad15">ValueStack的内部结构</a><br/>
+    <a href="${pageContext.request.contextPath}/ad16">ValueStack的root区数据存储(成员属性方式)</a><br/>
+    <a href="${pageContext.request.contextPath}/ad17">ValueStack的root区数据存储(值栈API的方式)</a><br/>
+    <a href="${pageContext.request.contextPath}/ad18">ValueStack的context区数据存储</a><br/>
+
+    <h2>ognl的三种特殊符号 # % $</h2>
+    <a href="${pageContext.request.contextPath}/jsp/valueStackDemo5.jsp">ognl的三种特殊符号之#</a><br/>
+    <a href="${pageContext.request.contextPath}/jsp/valueStackDemo6.jsp">ognl的三种特殊符号之%</a><br/>
+    <a href="${pageContext.request.contextPath}/ad19">ognl的三种特殊符号之$</a><br/>
+
+    <h2>使用[index]获取值栈数据</h2>
+    <a href="${pageContext.request.contextPath}/ad20">使用[index]获取值栈数据</a><br/>
+
+    <h2>自定义拦截器</h2>
+    <a href="${pageContext.request.contextPath}/ad21">使用自定义拦截器</a><br/>
+    <a href="${pageContext.request.contextPath}/ad22">指定拦截方法</a><br/>
 </body>
 </html>

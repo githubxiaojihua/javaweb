@@ -36,6 +36,7 @@
       <module>hibernate_jpa</module>
     <module>struts2</module>
       <module>struts_hibernateDemo</module>
+      <module>struts2Annotation</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

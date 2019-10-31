@@ -5,15 +5,34 @@
 <struts>
 
     <package name="test2" extends="struts-default" namespace="/">
+        <!-- 作用与整个package的拦截器配置 -->
+        <interceptors>
+            <!-- 自定义拦截器 -->
+            <interceptor name="myInterceptor" class="com.xiaojihua.interceptors.MyInterceptor">
+                <param name="includeMethods">findAll</param>
+            </interceptor>
+            <!-- 自定义拦截器组 -->
+            <interceptor-stack name="myInterceptors">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="myInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="myInterceptors"/>
+
+        <global-results>
+            <result name="login" type="redirect">/login.jsp</result>
+        </global-results>
+
         <action name="customer_*" class="com.xiaojihua.action.CustomerAction" method="{1}">
             <result name="success">/jsp/customer/list.jsp</result>
             <result name="addUI">/jsp/customer/add.jsp</result>
             <result name="toAction" type="redirectAction">customer_findAll</result>
+            <result name="login" type="redirect">/login.jsp</result>
         </action>
 
         <action name="user_*" class="com.xiaojihua.action.UserAction" method="{1}">
             <result name="success">/index.htm</result>
-            <result name="login">/login.jsp</result>
+            <result name="login" type="redirect">/login.jsp</result>
         </action>
     </package>
 </struts>

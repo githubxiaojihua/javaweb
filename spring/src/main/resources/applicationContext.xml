@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 这里有个小问题，当写上这些约束的时候，idea提示找不到对应的约束文件
      解决方式是导入本地约束文件
-     settings---搜索schema然后再schemas and DTDS中设置本地文件
+     settings搜索schema然后再schemas and DTDS中设置本地文件
      url是下面的xmlns
      file是约束文件的本地地址。
      其实约束文件主要是在开发环境中使用，用于约束xml文件的格式，

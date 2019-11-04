@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
-public class CollBeanTest {
+public class C03CollBeanTest {
 
     /**
      * 设置数组、列表、map等复杂类型的ID注入

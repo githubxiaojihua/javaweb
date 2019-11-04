@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class CarTest {
+public class C02CarTest {
 
     @Test //自己new对象 自己属性赋值的方式
     public void test()

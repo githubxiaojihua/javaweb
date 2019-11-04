@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class UserTest {
+public class C01UserTest {
 
     @Test // 自己new的对象
     public void test()

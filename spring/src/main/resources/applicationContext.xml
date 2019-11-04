@@ -183,4 +183,33 @@
             </props>
         </property>
     </bean>
+
+    <!-- spring 集成数据源，c3p0，使用set注入的方式注入相关参数 -->
+    <bean id="c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hibernate"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+
+    <!-- spring 集成数据源，c3p0，使用set注入的方式注入相关参数 -->
+    <bean id="dbcp" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/hibernate"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+
+    <!-- 让spring能够加载jdbc.properties文件
+		 spring提供了一个标签 可以加载外部的properties文件内容
+		 导context的名称空间和约束 才会有提示
+	-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <bean id="c3p0forprop" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
 </beans>

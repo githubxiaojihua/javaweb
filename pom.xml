@@ -38,6 +38,8 @@
       <module>struts_hibernateDemo</module>
       <module>struts2Annotation</module>
       <module>spring</module>
+      <module>spirng_annotation</module>
+      <module>spring_annotationConfig</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

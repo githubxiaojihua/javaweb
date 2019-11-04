@@ -4,4 +4,4 @@ day01:
 3、spring API BeanFactory和FileSystemXmlApplicationContext\ClassPathXmlApplicationContext
 
 day02
-1、spring整合c3p0和dbcp连接池
+1、spring整合c3p0和dbcp连接池，最终版本是使用配置文件

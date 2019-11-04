@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 这里有个小问题，当写上这些约束的时候，idea提示找不到对应的约束文件
+     解决方式是导入本地约束文件
+     settings搜索schema然后再schemas and DTDS中设置本地文件
+     url是下面的xmlns
+     file是约束文件的本地地址。
+     其实约束文件主要是在开发环境中使用，用于约束xml文件的格式，
+     发布到生产环境中，即使生产环境无法链接外网（找不到约束文件）也无关系。
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- 一个原则，别人的包用配置，自己的包用注解 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- 开启注解扫描 -->
+    <context:component-scan base-package="com.xiaojihua"/>
+
+    <bean id="c3p0forprop" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <!-- 自己的类 ,xml方式访问，下面的将通过相应注解进行替代-->
+    <!--<bean id="userDao" class="com.xiaojihua.daoimpl.UserDaoImpl"></bean>-->
+    <!--<bean id="userService" class="com.xiaojihua.serviceImpl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+        <property name="name" value="要开始访问dao了"/>
+    </bean>-->
+</beans>

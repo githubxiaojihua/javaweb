@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 这里有个小问题，当写上这些约束的时候，idea提示找不到对应的约束文件
+     解决方式是导入本地约束文件
+     settings搜索schema然后再schemas and DTDS中设置本地文件
+     url是下面的xmlns
+     file是约束文件的本地地址。
+     其实约束文件主要是在开发环境中使用，用于约束xml文件的格式，
+     发布到生产环境中，即使生产环境无法链接外网（找不到约束文件）也无关系。
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- bean definitions here -->
+
+    <!-- 目标类(有切入点 有被增强的方法save) -->
+    <bean id="person" class="com.xiaojihua.domain.Person"/>
+    <!-- 切面类(有通知/增强  有增强方法) -->
+    <bean id="myAspect" class="com.xiaojihua.aspacj.MyAspact"/>
+    <!-- 配置织入(增强方法和被增强方法集成在一起) -->
+    <aop:config>
+        
+        <!-- 定义切面 -->
+        <aop:aspect ref="myAspect">
+            <!-- 定义切点 -->
+            <!-- 切点定义具体的连接点 定义到save方法-->
+            <aop:pointcut id="pointcut1" expression="execution(void com.xiaojihua.domain.Person.save())"/>
+            <!-- 定义到具体的delete方法 -->
+            <aop:pointcut id="pointcut2" expression="execution(void com.xiaojihua.domain.Person.delete())"/>
+            <!-- 定义到Person类所有返回值的以up开头的方法 参数值全匹配-->
+            <aop:pointcut id="pointcut3" expression="execution(* com.xiaojihua.domain.Person.up*(..))"/>
+            <!-- 定义到domain包下面所有返回值的find方法，参数值全匹配 -->
+            <aop:pointcut id="pointcut4" expression="execution(* com.xiaojihua.domain.*.find(..))"/>
+
+            <!-- 开始织入 -->
+            <aop:before method="beforeMethod" pointcut-ref="pointcut1"/>
+            <aop:after method="afterRunningMethod" pointcut-ref="pointcut1"/>
+            <aop:after method="afterRunningMethod" pointcut-ref="pointcut2"/>
+            <aop:around method="aroundMethod" pointcut-ref="pointcut3"/>
+            <aop:after-throwing method="throwingMethod" pointcut-ref="pointcut4"/>
+            <aop:after method="afterMethod" pointcut-ref="pointcut4"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

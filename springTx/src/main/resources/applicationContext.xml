@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 配置文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- c3p0-->
+    <bean id="c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!-- spring jdbctemple -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="c3p0"/>
+    </bean>
+    
+    <!-- dao -->
+    <bean id="transferDao" class="com.xiaojihua.daoImpl.TransferDaoImpl">
+        <property name="template" ref="jdbcTemplate"/>
+    </bean>
+
+    <!-- service 目标类，事物永远实在service层中，因此service作为目标类-->
+    <bean id="transferService" class="com.xiaojihua.serviceImpl.TransferServiceImpl">
+        <property name="dao" ref="transferDao"/>
+    </bean>
+
+
+    <!-- 开始配置事物管理 -->
+    <!-- 配置事物管理器，对于不同的dao层实现技术spring提供了不同的事物管理器
+         DataSourceTransactionManager: dbutils jdbcTempalte  主要管理connnection
+         HibernateTransactionManager: hibernate hibernateTemplate 主要挂历session
+         他们都是PlatformTransactionManager的实现类
+         PlatformTransactionManager: 类更多的实在编程式事务管理的时候使用
+
+         其实事物管理器也可理解为切面类
+         因为他就是对于待增强类增强事物特性的
+         可以参考spirngaop项目中的配置文件
+         都是先定义一个普通的bean来作为切面类
+         然后再进行织入配置
+
+         切面类
+     -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="c3p0"/>
+    </bean>
+    <!-- spring对于事物的切面类有特殊的标签
+         定义事物增强并且指定事物管理器的各种参数
+         不写 该方法使用的事务参数都是默认值，但是必须配置
+    -->
+    <tx:advice transaction-manager="transactionManager" id="txAdvice">
+        <tx:attributes>
+            <!-- 可以写多个-->
+            <tx:method name="tranfer*" read-only="false" isolation="REPEATABLE_READ" timeout="-1"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 织入 -->
+    <aop:config>
+        <!-- 定义切点 -->
+        <aop:pointcut id="pointcut1" expression="execution(* com.xiaojihua.serviceImpl.TransferServiceImpl.tranfer(..))"></aop:pointcut>
+        <!-- 织入的时候spring对于事物也是有特殊的标签
+             指定事物管理器（增强）、切点
+        -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut1"/>
+    </aop:config>
+</beans>

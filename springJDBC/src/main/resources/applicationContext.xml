@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 这里有个小问题，当写上这些约束的时候，idea提示找不到对应的约束文件
+     解决方式是导入本地约束文件
+     settings搜索schema然后再schemas and DTDS中设置本地文件
+     url是下面的xmlns
+     file是约束文件的本地地址。
+     其实约束文件主要是在开发环境中使用，用于约束xml文件的格式，
+     发布到生产环境中，即使生产环境无法链接外网（找不到约束文件）也无关系。
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- c3p0-->
+    <bean id="c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!-- spring jdbctemple -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="c3p0"/>
+    </bean>
+    
+    <!-- dao -->
+    <bean id="accountDao" class="com.xiaojihua.daoImpl.AccountDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!-- service -->
+    <bean id="accountService" class="com.xiaojihua.serviceImpl.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao"/>
+    </bean>
+</beans>

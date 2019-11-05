@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 这里有个小问题，当写上这些约束的时候，idea提示找不到对应的约束文件
+     解决方式是导入本地约束文件
+     settings搜索schema然后再schemas and DTDS中设置本地文件
+     url是下面的xmlns
+     file是约束文件的本地地址。
+     其实约束文件主要是在开发环境中使用，用于约束xml文件的格式，
+     发布到生产环境中，即使生产环境无法链接外网（找不到约束文件）也无关系。
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- bean definitions here -->
+
+    <!-- 开启注解扫描 -->
+    <context:component-scan base-package="xiaojihua"/>
+    <!-- 开启注解的动态代理方式， 为了识别 @Before @After等 -->
+    <aop:aspectj-autoproxy/>
+</beans>

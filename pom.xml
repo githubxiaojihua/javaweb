@@ -40,6 +40,11 @@
       <module>spring</module>
       <module>spirng_annotation</module>
       <module>spring_annotationConfig</module>
+      <module>springAop</module>
+      <module>springAOPAnnotation</module>
+      <module>springAopAllAnnotation</module>
+      <module>springJDBC</module>
+      <module>springTx</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

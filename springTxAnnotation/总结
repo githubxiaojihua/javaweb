@@ -1,0 +1,18 @@
+spring 事物
+半xml半注解的形式
+自己的类用注解，别人的类用xml
+
+Transactional注解就可以替代以下代码
+     * <tx:advice transaction-manager="transactionManager" id="txAdvice">
+     *         <tx:attributes>
+     *
+     *             <tx:method name="tranfer*" read-only="false" isolation="REPEATABLE_READ" timeout="-1"/>
+     *         </tx:attributes>
+     *  </tx:advice>
+     *
+     *  <aop:config>
+     *
+     *         <aop:pointcut id="pointcut1" expression="execution(* com.xiaojihua.serviceImpl.TransferServiceImpl.tranfer(..))"></aop:pointcut>
+     *         <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut1"/>
+     *  </aop:config>
+     *  也可以设置相关的隔离级别，超时时间等参数

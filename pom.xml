@@ -45,6 +45,8 @@
       <module>springAopAllAnnotation</module>
       <module>springJDBC</module>
       <module>springTx</module>
+      <module>springTxAnnotation</module>
+    <module>springTxAllannotation</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

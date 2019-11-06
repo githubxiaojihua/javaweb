@@ -45,13 +45,13 @@
          他们都是PlatformTransactionManager的实现类
          PlatformTransactionManager: 类更多的实在编程式事务管理的时候使用
 
-         其实事物管理器也可理解为切面类
+         其实事物管理器也可理解为增强类
          因为他就是对于待增强类增强事物特性的
          可以参考spirngaop项目中的配置文件
          都是先定义一个普通的bean来作为切面类
          然后再进行织入配置
 
-         切面类
+         增强类
      -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="c3p0"/>
@@ -67,12 +67,13 @@
         </tx:attributes>
     </tx:advice>
 
-    <!-- 织入 -->
+    <!-- 织入-->
     <aop:config>
         <!-- 定义切点 -->
         <aop:pointcut id="pointcut1" expression="execution(* com.xiaojihua.serviceImpl.TransferServiceImpl.tranfer(..))"></aop:pointcut>
         <!-- 织入的时候spring对于事物也是有特殊的标签
              指定事物管理器（增强）、切点
+             将增强和切点组合起来，形成切面
         -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut1"/>
     </aop:config>

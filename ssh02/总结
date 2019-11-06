@@ -1,0 +1,40 @@
+struts,hibernate,spring框架整合
+XML版本，整合struts的第一中方式
+http://localhost:8080/ssh02/form.jsp
+案例就是提交form.jsp中的数据保存到数据库中
+
+1 spring整合web应用
+
+				1 spring的容器什么时候加载.并且怎么样只加载一次?  监听器
+
+				这个监听器,spring给我们提供好了,只要服务器一启动就会加载spring的配置文件
+				而且是只加载一次 这个spring提供好的监听器在spring-web.jar这个包中 只要去配置即可
+
+				 1 导包:spring-web.jar
+
+				 2 在web.xml下配置监听器
+
+				 <listener>
+						<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+				  </listener>
+				  <context-param>
+						<param-name>contextConfigLocation</param-name>
+						<param-value>classpath:applicationContext.xml</param-value>
+				  </context-param>
+
+
+2、将struts的Action创建交给spring
+   两种方式
+                条件: struts-spring-plugin.jar
+
+   				 1 将action的创建交给spring管理(重点)
+   						1 导入struts-spring-plugin.jar
+
+   						2 在application中配置action以及action的属性
+
+   						3 在struts2中开启action的创建交给容器
+   								<constant name="struts.objectFactory" value="spring"></constant>
+
+   						4 在action配置中.class不在是全限定名根据反射创建 而是去spring容器中根据action的id值获取
+
+   						注意: 如果action是交给spring管理的情况下, action必须得配置scope="prototype" 多实例

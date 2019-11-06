@@ -47,6 +47,9 @@
       <module>springTx</module>
       <module>springTxAnnotation</module>
     <module>springTxAllannotation</module>
+      <module>ssh01</module>
+      <module>ssh02</module>
+      <module>ssh03</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

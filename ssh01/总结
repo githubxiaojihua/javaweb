@@ -1,0 +1,11 @@
+非常原始的struts,hibernate,spring整合
+导入三个框架的相关包
+配置好配置文件和映射文件
+然后Action调用service是手工写spring api加载配置文件然后获得bean
+service交给spring管理，
+dao交给spring管理，但是dao中的hibernate也是手写api启动
+
+
+http://localhost:8080/ssh01/form.jsp
+案例就是提交form.jsp中的数据保存到数据库中
+

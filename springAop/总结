@@ -1,1 +1,5 @@
 spring aop xml方式
+
+有几个概念备注一下
+advice是增强
+advisor是切面

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- 告诉hibernate要连接的数据库信息 -->
+<hibernate-configuration>
+    <session-factory>
+        <!-- 数据的驱动 -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <!-- 数据库的地址-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ssh01?useUnicode=true&amp;characterEncoding=utf8</property>
+
+        <!-- 数据库的用户名  -->
+        <property name="hibernate.connection.username">root</property>
+
+        <!-- 数据库的密码 -->
+        <property name="hibernate.connection.password">root</property>
+
+        <!-- 数据库的方言 -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- 用c3p0连接池-->
+        <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+        <!-- hibernate自动生成的sql语句在控制台显示出来 -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- 显示的sql语句更加的格式化 -->
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- 配置和当前线程绑定的session进行开启配置 -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- 映射文件 -->
+        <mapping resource="com/xiaojihua/domain/User.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

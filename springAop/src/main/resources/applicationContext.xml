@@ -19,12 +19,12 @@
 
     <!-- 目标类(有切入点 有被增强的方法save) -->
     <bean id="person" class="com.xiaojihua.domain.Person"/>
-    <!-- 切面类(有通知/增强  有增强方法) -->
+    <!-- 增强类(有通知/增强  有增强方法) -->
     <bean id="myAspect" class="com.xiaojihua.aspacj.MyAspact"/>
     <!-- 配置织入(增强方法和被增强方法集成在一起) -->
     <aop:config>
         
-        <!-- 定义切面 -->
+        <!-- 定义切面，给增强类装上切点使之成为切面类 -->
         <aop:aspect ref="myAspect">
             <!-- 定义切点 -->
             <!-- 切点定义具体的连接点 定义到save方法-->

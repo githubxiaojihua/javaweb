@@ -1,0 +1,23 @@
+struts2,spring,hibernate整合
+XML方式，整合struts2的第二种方式
+http://localhost:8080/ssh03/form.jsp
+案例就是提交form.jsp中的数据保存到数据库中
+
+2 让struts2的容器和spring的容器互通
+						action还是struts2创建,但是属性找spring容器注入
+
+						1 导入struts-spring-plugin.jar
+
+						2 什么都不需要指定  action还是会有struts2创建 但是属性找spring容器注入
+
+					    默认struts的参数struts.objectFactory.spring.autoWire = name
+					    指定需要action要注入的属性名称必须和spring的id一直否则会报错，
+					    比如action中的：
+					    private UserService service;
+
+                            public void setService(UserService service) {
+                                this.service = service;
+                            }
+						那么spring的service名称也应该交service才行，而且actionz中一定要有set方法
+						<constant name="struts.objectFactory.spring.autoWire" value="type"></constant>
+						按类型注入

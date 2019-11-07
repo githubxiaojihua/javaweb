@@ -1,0 +1,16 @@
+案例就是提交form.jsp中的数据保存到数据库中
+在spring集成struts2的第一种方式的基础上集成hibernate
+
+
+
+spring整合hibernate的2种方案--第一种
+
+				导包: spring-orm.jar
+
+				1 spring整合hibernate带配置文件
+						1 方案一:(掌握)
+						配置sessionfactory
+
+						做aop的事务管理
+
+					

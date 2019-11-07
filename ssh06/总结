@@ -1,0 +1,10 @@
+ spring整合hibernate的2种方案---第二种方案
+
+				导包: spring-orm.jar
+
+
+				2 spring整合hibernate不带配置文件，将配置文件中的内容通过设置LocalSessionFactoryBean相关属性来设置
+						在spring容器中:
+						配置数据库信息
+						配置hibernate信息
+						配置映射文件加载信息

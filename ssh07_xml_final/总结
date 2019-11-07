@@ -1,0 +1,13 @@
+
+struts,hibernate,spring整合
+xml版本的最终版
+
+步骤：
+1、导入所有相关包
+2、在web.xml中配置struts和spring的启动
+3、建立相关包结构，创建相关类
+4、配置struts.xml，application.xml
+5、在application.xml中集成struts和hibernate以及事物管理
+
+http://localhost:8080/sshfinal/form.jsp
+案例就是提交form.jsp中的数据保存到数据库中

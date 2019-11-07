@@ -52,6 +52,8 @@
       <module>ssh03</module>
       <module>ssh04</module>
       <module>ssh05</module>
+      <module>ssh06</module>
+      <module>ssh07_xml_final</module>
   </modules>
   <packaging>pom</packaging>
   <name>javaWeb Maven Webapp</name>

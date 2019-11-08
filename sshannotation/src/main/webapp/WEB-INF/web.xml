@@ -16,6 +16,10 @@
       <param-name>struts.convention.package.locators</param-name>
       <param-value>web</param-value>
     </init-param>
+    <init-param>
+      <param-name>struts.i18n.encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
     <filter-name>struts2</filter-name>

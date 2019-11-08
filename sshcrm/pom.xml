@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sshannotation</artifactId>
+    <artifactId>sshcrm</artifactId>
     <packaging>war</packaging>
 
-    <name>sshannotation Maven Webapp</name>
+    <name>sshcrm Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -146,10 +146,10 @@
             <version>4.2.4.RELEASE</version>
         </dependency>
         <!-- spring整合hibernate===========结束 -->
-   </dependencies>
+    </dependencies>
 
     <build>
-        <finalName>sshannotation</finalName>
+        <finalName>sshcrm</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>

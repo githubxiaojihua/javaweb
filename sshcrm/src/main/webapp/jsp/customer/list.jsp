@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,13 +10,39 @@
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css
 	rel=stylesheet>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    /**
+     * 设置数据回填：
+     * 因为条件查询的时候，所设置的条件都是由于模型驱动而加载到了Customer类中
+     * 在值栈中处于栈顶的位置。可以直接通过栈中的property name来获取
+     * 因此可以使用这个性质来进行回填
+     */
+    $(function(){
+        //从值栈中获取客户级别、客户来源、客户所属行业的下拉列表值进行回填选中
+        //设置客户级别下拉框数据回填
+        $("#level option[value=<s:property value="cust_level.dict_id"/>]").prop("selected",true);
+        $("#source option[value=<s:property value="cust_source.dict_id"/>]").prop("selected",true);
+        $("#industry option[value=<s:property value="cust_industry.dict_id"/>]").prop("selected",true);
+    });
 
+    /**
+     * 删除
+     * @param cust_id
+     */
+    function del(cust_id){
+        if(confirm("确定删除吗？")){
+            window.location = "${pageContext.request.contextPath}/customer_delete?cust_id=" + cust_id + "&cust_name=zs";
+        }
+    }
+</script>
 
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
+
+<s:debug></s:debug>
 	<FORM id="customerForm" name="customerForm"
-		action="${pageContext.request.contextPath }/customerServlet?method=list"
+		action="${pageContext.request.contextPath }/customer_conditionFind"
 		method=post>
 		
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -53,8 +80,46 @@
 											<TBODY>
 												<TR>
 													<TD>客户名称：</TD>
-													<TD><INPUT class=textbox id=sChannel2
-														style="WIDTH: 80px" maxLength=50 name="custName"></TD>
+													<TD>
+                                                        <!-- 获得值栈中的值进行回填 -->
+                                                        <INPUT class=textbox id=sChannel2
+														style="WIDTH: 80px" maxLength=50 name="cust_name" value="<s:property value="cust_name"/>"></TD>
+
+													<TD>客户级别：</TD>
+													<TD>
+														<select id="level" name="cust_level.dict_id" style="WIDTH: 180px">
+															<option value="-1">---请选择---</option>
+															<s:iterator value="levelList" var="basedict">
+																<option value="<s:property value="#basedict.dict_id"/>">
+																	<s:property value="#basedict.dict_item_name"/>
+																</option>
+															</s:iterator>
+														</select>
+													</TD>
+
+													<TD>客户来源：</TD>
+													<TD>
+														<select id="source" name="cust_source.dict_id" style="WIDTH: 180px">
+															<option value="-1">---请选择---</option>
+															<s:iterator value="sourceList" var="basedict">
+																<option value="<s:property value="#basedict.dict_id"/>">
+																	<s:property value="#basedict.dict_item_name"/>
+																</option>
+															</s:iterator>
+														</select>
+													</TD>
+
+													<TD>客户所属行业：</TD>
+													<TD>
+														<select id="industry" name="cust_industry.dict_id" style="WIDTH: 180px">
+															<option value="-1">---请选择---</option>
+															<s:iterator value="industryList" var="basedict">
+																<option value="<s:property value="#basedict.dict_id"/>">
+																	<s:property value="#basedict.dict_item_name"/>
+																</option>
+															</s:iterator>
+														</select>
+													</TD>
 													
 													<TD><INPUT class=button id=sButton2 type=submit
 														value=" 筛选 " name=sButton2></TD>
@@ -80,22 +145,22 @@
 													<TD>手机</TD>
 													<TD>操作</TD>
 												</TR>
-												<TR
-													style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-													<TD>阿里巴巴</TD>
-													<TD>1级</TD>
-													<TD>互联网</TD>
-													<TD>小马</TD>
-													<TD>18999999899</TD>
-													<TD>18999999899</TD>
-													<TD>
-													<a href="${pageContext.request.contextPath }/jsp/customer/edit.jsp">修改</a>
-													&nbsp;&nbsp;
-													<a href="#">删除</a>
-													</TD>
-												</TR>
-												
-
+												<s:iterator value="customers" var="customer">
+													<TR
+															style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+														<TD><s:property value="#customer.cust_name"/></TD>
+														<TD><s:property value="#customer.cust_level.dict_item_name"/></TD>
+														<TD><s:property value="#customer.cust_source.dict_item_name"/></TD>
+														<TD><s:property value="#customer.cust_industry.dict_item_name"/></TD>
+														<TD><s:property value="#customer.cust_phone"/></TD>
+														<TD><s:property value="#customer.cust_mobile"/></TD>
+														<TD>
+															<a href="${pageContext.request.contextPath }/customer_editUI?cust_id=<s:property value="#customer.cust_id"/>">修改</a>
+															&nbsp;&nbsp;
+															<a href="#" onclick="del(<s:property value="#customer.cust_id"/>)" >删除</a>
+														</TD>
+													</TR>
+												</s:iterator>
 											</TBODY>
 										</TABLE>
 									</TD>

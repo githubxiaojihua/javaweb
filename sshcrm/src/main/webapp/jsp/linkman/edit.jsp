@@ -1,5 +1,8 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 别导错了否则出现attribute test does not accept any expressions错误 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,15 +11,20 @@
 <LINK href="${pageContext.request.contextPath }/css/Style.css" type=text/css rel=stylesheet>
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css
 	rel=stylesheet>
-
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+	   $("#customerId option[value=<s:property value="linkmanFind.customer.cust_id"/>]").prop("selected",true);
+	});
+</script>
 
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
 	<FORM id=form1 name=form1
-		action="${pageContext.request.contextPath }/linkmanServlet?method=editsubmit"
+		action="${pageContext.request.contextPath }/linkman_update"
 		method=post>
-		<input type="hidden" name="lkmId" value="${linkman.lkmId }"/>
+		<input type="hidden" name="lkm_id" value="${linkmanFind.lkm_id }"/>
 
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
@@ -48,35 +56,40 @@
 							<tr>
 								<td>所属客户：</td>
 								<td colspan="3">
-									<select name="custId" style="WIDTH: 180px">
-										<option value="1">百度</option>
-										<option value="2">谷歌</option>
+									<select id="customerId" name="customer.cust_id" style="WIDTH: 180px">
+										<option value="-1">---请选择---</option>
+										<s:iterator value="customerList" var="customer">
+											<option value="<s:property value="#customer.cust_id"/>">
+												<s:property value="#customer.cust_name"/>
+											</option>
+										</s:iterator>
 									</select>
 								</td>
 							</tr>
 							<TR>
 								<td>联系人名称：</td>
 								<td>
+									<!-- 使用jstl表达式也可以获取数据 -->
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="lkmName" value="${linkman.lkmName}" >
+														style="WIDTH: 180px" maxLength=50 name="lkm_name" value="${linkmanFind.lkm_name}" >
 								</td>
 								<td>联系人性别：</td>
 								<td>
-								<input type="radio" value="1" name="lkmGender" <c:if test="${linkman.lkmGender=='1' }">checked</c:if>>男
-								
-								<input type="radio" value="2" name="lkmGender" <c:if test="${linkman.lkmGender=='2' }">checked</c:if>>女
+									<input type="radio" value="1" name="lkm_gender" <c:if test="${linkmanFind.lkm_gender=='1' }">checked</c:if>>男
+
+									<input type="radio" value="2" name="lkm_gender" <c:if test="${linkmanFind.lkm_gender=='2' }">checked</c:if>>女
 								</td>
 							</TR>
 							<TR>
 								<td>联系人办公电话 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="lkmPhone" value="${linkman.lkmPhone}">
+														style="WIDTH: 180px" maxLength=50 name="lkm_phone" value="${linkmanFind.lkm_phone}">
 								</td>
 								<td>联系人手机 ：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="lkmMobile" value="${linkman.lkmMobile}">
+														style="WIDTH: 180px" maxLength=50 name="lkm_mobile" value="${linkmanFind.lkm_mobile}">
 								</td>
 							</TR>
 							<tr>

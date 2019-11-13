@@ -1,6 +1,8 @@
 package com.xiaojihua.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * customer表
@@ -32,6 +34,13 @@ public class Customer {
     @ManyToOne(targetEntity=BaseDict.class)
     @JoinColumn(name="cust_level",referencedColumnName="dict_id")
     private BaseDict cust_level;// '客户级别',
+
+    //客户联系人集合，需要将集合new出来
+    //mappedBy指的是在对方类中维护外键的属性名
+    @OneToMany(targetEntity=Linkman.class,mappedBy="customer")
+    Set<Linkman> linkmanSet = new HashSet<>();
+
+
     public void setCust_id(Integer cust_id) {
         this.cust_id = cust_id;
     }

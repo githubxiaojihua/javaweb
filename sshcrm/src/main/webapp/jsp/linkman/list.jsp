@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,22 +9,20 @@
 <LINK href="${pageContext.request.contextPath }/css/Style.css" type=text/css rel=stylesheet>
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css
 	rel=stylesheet>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.4.4.min.js"></script>
+<%--1.8以前没有prop()方法--%>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
 <SCRIPT language=javascript>
-	function to_page(page){
-		if(page){
-			$("#page").val(page);
-		}
-		document.customerForm.submit();
-		
-	}
+	$(function(){
+	    //设置下拉框的回显
+		$("#customerId option[value=<s:property value="customer.cust_id"/>]").prop("selected",true);
+	});
 </SCRIPT>
 
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
 	<FORM id="customerForm" name="customerForm"
-		action="${pageContext.request.contextPath }/linkmanServlet?method=list"
+		action="${pageContext.request.contextPath }/linkman_find"
 		method=post>
 		
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -62,8 +61,21 @@
 												<TR>
 													<TD>联系人名称：</TD>
 													<TD><INPUT class=textbox id=sChannel2
-														style="WIDTH: 80px" maxLength=50 name="lkmName"></TD>
-													
+															   value="<s:property value="lkm_name"/>"
+														style="WIDTH: 80px" maxLength=50 name="lkm_name"></TD>
+
+													<TD>所属客户：</TD>
+													<TD>
+														<select id="customerId" name="customer.cust_id" style="WIDTH: 180px">
+															<option value="-1">---请选择---</option>
+															<s:iterator value="customerList" var="customer">
+																<option value="<s:property value="#customer.cust_id"/>">
+																	<s:property value="#customer.cust_name"/>
+																</option>
+															</s:iterator>
+														</select>
+													</TD>
+
 													<TD><INPUT class=button id=sButton2 type=submit
 														value=" 筛选 " name=sButton2></TD>
 												</TR>
@@ -86,19 +98,22 @@
 													<TD>手机</TD>
 													<TD>操作</TD>
 												</TR>
-												<TR
-													style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-													<TD>张三</TD>
-													<TD>男</TD>
-													<TD>15899865856</TD>
-													<TD>15899865856</TD>
-													
-													<TD>
-													<a href="#">修改</a>
-													&nbsp;&nbsp;
-													<a href="#">删除</a>
-													</TD>
-												</TR>
+												<s:iterator value="linkmanList" var="linkman">
+													<TR
+															style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+														<TD><s:property value="#linkman.lkm_name"/></TD>
+														<TD><s:property value="#linkman.lkm_gender"/></TD>
+														<TD><s:property value="#linkman.lkm_phone"/></TD>
+														<TD><s:property value="#linkman.lkm_mobile"/></TD>
+
+														<TD>
+															<a href="${pageContext.request.contextPath}/linkman_editUI?lkm_id=<s:property value="#linkman.lkm_id"/>">修改</a>
+															&nbsp;&nbsp;
+															<a href="#">删除</a>
+														</TD>
+													</TR>
+												</s:iterator>
+
 												
 											</TBODY>
 										</TABLE>

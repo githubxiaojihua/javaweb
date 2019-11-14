@@ -11,4 +11,6 @@ public interface LinkmanDao {
     List<Linkman> findByDc(DetachedCriteria dc);
     Linkman findById(Long id);
     void update(Linkman linkman);
+    List<Linkman> findPage(DetachedCriteria dc,int start, int pageSize);
+    int findCount(DetachedCriteria dc);
 }

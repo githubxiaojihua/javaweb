@@ -1,5 +1,6 @@
 package com.xiaojihua.service;
 
+import com.xiaojihua.bean.PageBean;
 import com.xiaojihua.domain.Linkman;
 import org.hibernate.criterion.DetachedCriteria;
 
@@ -11,4 +12,5 @@ public interface LinkmanService {
     List<Linkman> findByDc(DetachedCriteria dc);
     Linkman findById(Long id);
     void update(Linkman linkman);
+    PageBean<Linkman> findPage(DetachedCriteria dc,PageBean pageBean);
 }

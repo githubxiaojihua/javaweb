@@ -2,6 +2,7 @@ package com.xiaojihua.web;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.xiaojihua.bean.PageBean;
 import com.xiaojihua.domain.Customer;
 import com.xiaojihua.domain.Linkman;
 import com.xiaojihua.service.CustomerService;
@@ -39,6 +40,7 @@ public class LinkmanAction extends ActionSupport implements ModelDriven<Linkman>
     private List<Customer> customerList;
     private List<Linkman> linkmanList;
     private Linkman linkmanFind;
+    private PageBean<Linkman> page;
 
     public List<Customer> getCustomerList() {
         return customerList;
@@ -50,6 +52,21 @@ public class LinkmanAction extends ActionSupport implements ModelDriven<Linkman>
 
     public Linkman getLinkmanFind() {
         return linkmanFind;
+    }
+
+    public PageBean<Linkman> getPage() {
+        return page;
+    }
+    //属性赋值区域
+    private int pageNumber = 1;
+    private int pageSize = 3;
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 
     /**
@@ -132,5 +149,32 @@ public class LinkmanAction extends ActionSupport implements ModelDriven<Linkman>
     public String update(){
         linkmanService.update(linkman);
         return "toAction";
+    }
+
+
+    /**
+     * 分页查询
+     * @return
+     */
+    @Action(value="linkman_findPage",results={@Result(name="toList",location="/jsp/linkman/listPage.jsp")})
+    public String findPage(){
+        /*步骤:
+         * 1 查询所有的客户 返回的是list
+         * 2 将list放在值栈中 带到list.jsp页面显示到条件查询的下拉列表中
+         * 3 将联系人的数据全查 返回的list
+         * 4 将联系人的list放在值栈中 带到list.jsp页面展示联系人的信息
+         **/
+        customerList = service.find();
+        DetachedCriteria dc = DetachedCriteria.forClass(Linkman.class);
+        //设置查询条件
+        if(linkman.getLkm_name()!= null){
+            dc.add(Restrictions.like("lkm_name","%" + linkman.getLkm_name() + "%"));
+        }
+        if(linkman.getCustomer()!= null && linkman.getCustomer().getCust_id() != -1){
+            dc.add(Restrictions.eq("customer.cust_id",linkman.getCustomer().getCust_id()));
+        }
+        PageBean<Linkman> pageBean = new PageBean<>(pageNumber,pageSize);
+        page = linkmanService.findPage(dc, pageBean);
+        return "toList";
     }
 }

@@ -162,7 +162,9 @@ A.active {
 												</TR>
 												<TR>
 													<TD class=menuSmall>
-														<A class=style2 href="${pageContext.request.contextPath }/linkman_find" target=main>－联系人列表</A>
+														<%--<A class=style2 href="${pageContext.request.contextPath }/linkman_find" target=main>－联系人列表</A>--%>
+															<!-- 分页查询 -->
+															<A class=style2 href="${pageContext.request.contextPath }/linkman_findPage" target=main>－联系人列表</A>
 													</TD>
 												</TR>
 												

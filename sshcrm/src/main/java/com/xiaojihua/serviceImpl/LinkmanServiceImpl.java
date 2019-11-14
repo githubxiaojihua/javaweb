@@ -1,5 +1,6 @@
 package com.xiaojihua.serviceImpl;
 
+import com.xiaojihua.bean.PageBean;
 import com.xiaojihua.dao.LinkmanDao;
 import com.xiaojihua.domain.Linkman;
 import com.xiaojihua.service.LinkmanService;
@@ -40,5 +41,16 @@ public class LinkmanServiceImpl implements LinkmanService {
     @Override
     public void update(Linkman linkman) {
         dao.update(linkman);
+    }
+
+    @Override
+    public PageBean<Linkman> findPage(DetachedCriteria dc, PageBean pageBean) {
+        //查询并设置总条数
+        int totalNumber = dao.findCount(dc);
+        pageBean.setTotalNumber(totalNumber);
+        //查询并设置数据集
+        List<Linkman> linkmanList = dao.findPage(dc, pageBean.getStartIndex(), pageBean.getPageSize());
+        pageBean.setData(linkmanList);
+        return pageBean;
     }
 }

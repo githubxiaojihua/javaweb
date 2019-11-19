@@ -1,0 +1,11 @@
+通过java程序调用oracle存储过程
+
+在导入ojdbc jar的时候出现问题：按照maven repository中的设置无论如何也导入不了依赖
+解决方法是：
+手工将maven课程中的repository解压，找到到com.oracle 将文件夹复制到本地仓库中的对应
+文件夹中，然后按照目录结构对应groupid artifactid version进行依赖导入就可以了
+这样依赖的就是本地手工拷贝的这个jar文件。
+
+1、使用jdbc进行普通的oracle数据库操作。
+2、调用存储过程
+3、调用存储方法

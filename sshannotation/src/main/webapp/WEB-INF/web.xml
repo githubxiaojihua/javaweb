@@ -7,6 +7,7 @@
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
     <!-- 替代struts.xml中的<constant name="struts.objectFactory" value="spring"></constant> -->
+    <!-- 这一块不配置也行 -->
     <init-param>
       <param-name>struts.objectFactory</param-name>
       <param-value>spring</param-value>

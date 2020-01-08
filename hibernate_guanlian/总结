@@ -2,6 +2,7 @@ day03:
 hibernate的关联关系
 1、一对多的关系（customer,linkman)
 2、多对多的关系 role,user
+2.1 一对一的关联可以参考mybase中的hibernate简洁版学习---or映射----双向1对1
 3、级联操作
 4、对象导航查询
 5、延迟加载

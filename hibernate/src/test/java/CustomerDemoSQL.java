@@ -9,6 +9,10 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 原生SQL在Spring data jpa部分有介绍（在国际物流云商系统的项目中）
+ * 这里所说的是hibernate支持的原生SQL(待学习）
+ */
 public class CustomerDemoSQL {
 
     // 原生SQL查询，待学习

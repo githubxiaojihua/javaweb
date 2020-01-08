@@ -18,7 +18,7 @@ public class Dome2 {
     /**
      * 普通的保存操作，默认是会出错的，因为双方都维护了外键，
      * 在插入的时候会出现问题
-     * 解决方式就是被动的一方放弃外键维护
+     * 解决方式就是被动的一方放弃外键维护(这里被动的一方是Role)在role中的set上设置
      * <set name="users" table="sys_user_role" inverse="true">
      */
     @Test

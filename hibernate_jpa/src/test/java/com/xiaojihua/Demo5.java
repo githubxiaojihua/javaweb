@@ -13,7 +13,8 @@ import javax.persistence.EntityTransaction;
 
 /**
  *
- * 离线查询
+ * 离线查询，视频课程里讲的是QBC的离线查询，这块需要自己找找hibernate相关资料
+ * 看看有没有jpa的离线查询
  */
 public class Demo5 {
 

@@ -24,6 +24,7 @@ public class ActionDemo18 extends ActionSupport{
         application.put("msg2","servletContext");
 
         //自定义context区域的key 和 value
+        //这样就直接put到了context区域，在debug标签下可以看到key=msg value=msgsssss
         context.put("msg","msgssssss");
         //获取context区域的值
         System.out.println(context.get("msg"));

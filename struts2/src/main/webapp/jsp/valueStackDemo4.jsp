@@ -14,6 +14,7 @@
 <!-- 获取xcontext区域的数据  -->
     <s:property value="#session.msg1"/><br/>
     <s:property value="#application.msg2"/><br/>
+    <!-- 通过attr也能获取属性，attr在context区域 -->
     <s:property value="#attr.msg1"/>----<s:property value="#attr.msg2"/><br/>
     <s:property value="#msg"/><br/>
 

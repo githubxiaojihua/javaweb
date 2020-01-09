@@ -27,10 +27,11 @@ public class ActionDemo17 extends ActionSupport{
         ActionContext context = ActionContext.getContext();
         ValueStack valueStack = context.getValueStack();
         valueStack.push(user);
+
         //会新建一个hashMap并且放到值栈中，虽然在值栈的debug下map的property为空但是依然能获取到值
         //放多个值依然是一个map
-        valueStack.set("name","12121");
-        valueStack.set("age","12121");
+        valueStack.set("name","jj");
+        valueStack.set("agee","12");
         System.out.println(valueStack.findValue("name"));
         return SUCCESS;
     }

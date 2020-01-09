@@ -14,7 +14,11 @@
 			 类似调用这个方法:vs.findValue(Property Name);
 
 		 -->
+    <!-- 获取push的对象 -->
     <s:property value="userName"/>
     <s:property value="age"/>
+    <!-- 获取set的map值 -->
+    <s:property value="name"/>
+    <s:property value="agee"/>
 </body>
 </html>

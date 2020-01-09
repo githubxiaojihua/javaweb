@@ -12,25 +12,25 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 
     <!-- name: 包名 对于咱们来说意义不大 作用:给别人继承用
-	extends: 继承  默认值:默认基层struts2提供的一个包 包名:struts-default
+	extends: 继承  默认值:默认继承struts2提供的一个包 包名:struts-default
 			 继承哪个包 那这个包下的所有东西都有一份
 
 	namespace: 名称空间   和浏览器访问地址相关
 	abstract:抽象的 默认是false 如果写成了true 代表当前的pageage下面不能出现action 他们2个是互斥的
 		     该包只能被用来继承
 	-->
-    <!--<package name="abc" extends="struts-default" namespace="/">
-        &lt;!&ndash;做action的地址访问路径
+    <package name="abc" extends="struts-default" namespace="/">
+        <!--做action的地址访问路径
         name:action的名字  和浏览器访问地址相关
         namespace和name 组成了当前action的访问地址
         class:全限定名
         method: 可以不写 默认就是执行叫一个execute的方法
         第一中创建Action的方式，一个普通的java类，只要有execute方法即可
-        &ndash;&gt;
+        -->
         <action name="hello" class="com.xiaojihua.struts.action.ActionDemo1">
             <result name="abc">/jsp/demo.jsp</result>
         </action>
-    </package>-->
+    </package>
 
     <!-- 引入外部的action配置  -->
     <!--<include file="struts_user.xml"></include>-->
@@ -51,42 +51,42 @@
 
         <!-- Action的3中访问方式 -->
         <!-- 普通访问 -->
-        <!--<action name="product_save" class="com.xiaojihua.struts.action.ActionDemo4" method="save">
+        <action name="product_save" class="com.xiaojihua.struts.action.ActionDemo4" method="save">
         </action>
         <action name="product_delete" class="com.xiaojihua.struts.action.ActionDemo4" method="delete">
         </action>
         <action name="product_update" class="com.xiaojihua.struts.action.ActionDemo4" method="update">
         </action>
         <action name="product_find" class="com.xiaojihua.struts.action.ActionDemo4" method="find">
-        </action>-->
+        </action>
 
         <!-- 通配符访问 -->
-        <!--<action name="product_*" class="com.xiaojihua.struts.action.ActionDemo4" method="{1}">
-        </action>-->
+        <action name="product_*" class="com.xiaojihua.struts.action.ActionDemo4" method="{1}">
+        </action>
 
-        <!-- 动态访问 -->
+        <!-- 动态访问 需要开启常量DynamicMethodInvocation-->
         <action name="product" class="com.xiaojihua.struts.action.ActionDemo4">
 
         </action>
 
-        <!-- 获取Servlet的API访问方式 -->
-        <!-- 通过ServletActionContext的方式获取servlet api -->
+        <!-- 获取Servlet的API访问方式
+         通过ServletActionContext的方式获取servlet api
         <action name="ad5" class="com.xiaojihua.struts.action.ActionDemo5">
 
         </action>
-        <!-- 通过ActionContext的方式获取servlet api -->
+         通过ActionContext的方式获取servlet api
         <action name="ad6" class="com.xiaojihua.struts.action.ActionDemo6">
 
         </action>
-        <!-- 通过实现不同的接口来获取servlet api -->
+         通过实现不同的接口来获取servlet api
         <action name="ad7" class="com.xiaojihua.struts.action.ActionDemo7">
 
         </action>
 
-        <!-- 证明了action 是多实例 -->
+         证明了action 是多实例
         <action name="ad8" class="com.xiaojihua.struts.action.ActionDemo8">
 
-        </action>
+        </action>-->
 
     </package>
 
@@ -96,8 +96,8 @@
 											  但如果是其它的 一定要写
 
 						 type:要跳转的类型
-						 	 dispatcher 默认值 用于请求转发到页面
-						 	 redirect 用于重定向到页面
+						 	 dispatcher 默认值 用于请求转发到页面，服务器内部转发浏览器地址不变
+						 	 redirect 用于重定向到页面，浏览器地址会变
 
 						 	 chain 用于请求转发到action
 						 	 redirectAction 用于重定向到action
@@ -168,7 +168,7 @@
     </package>
 
     <package name="intersceptor" extends="struts-default" namespace="/">
-        <!-- 为package包下面的所有action配置拦截器 
+        <!-- 为package包下面的所有action配置拦截器
              配置的时候注意如果写了default-interceptor-ref的话
              那么原来struts默认的拦截器就被覆盖掉不执行了
              比如modelDriven也不执行了，那就没有办法进行模型封装了

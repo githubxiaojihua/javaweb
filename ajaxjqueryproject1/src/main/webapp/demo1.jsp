@@ -7,14 +7,16 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
+
 	$(function(){
+	    //绑定失去交点事件，并且通过ajax异步检查用户名是否可用
 	    $("[name=username]").blur(function(){
 	        $.ajax({
 				url:"${pageContext.request.contextPath}/userServlet",
 				type:"post",
-				//通过普通形式传递多参数
+				//通过普通形式传递多参数，后台可以用request接收
 				data:"userName=" + $("[name=username]").val() + "&pass=123",
-				//以json形式传递多参
+				//以json形式传递多参，后台也可以用request接收
 				/*data:{
 				    userName:$("[name=username]").val(),
 					pass:"111"

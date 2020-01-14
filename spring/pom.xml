@@ -72,7 +72,7 @@
             <version>0.9.5.3</version>
         </dependency>
 
-        <!-- 增加了JDBC连接池的依赖 -->
+        <!-- 增加了dbcp连接池的依赖 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>

@@ -24,11 +24,11 @@
     <context:component-scan base-package="com.xiaojihua"/>
 
     <bean id="c3p0forprop" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${jdbc.driver}"></property>
-        <property name="jdbcUrl" value="${jdbc.url}"></property>
-        <property name="user" value="${jdbc.username}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-    </bean>
+    <property name="driverClass" value="${jdbc.driver}"></property>
+    <property name="jdbcUrl" value="${jdbc.url}"></property>
+    <property name="user" value="${jdbc.username}"></property>
+    <property name="password" value="${jdbc.password}"></property>
+</bean>
 
     <!-- 自己的类 ,xml方式访问，下面的将通过相应注解进行替代-->
     <!--<bean id="userDao" class="com.xiaojihua.daoimpl.UserDaoImpl"></bean>-->

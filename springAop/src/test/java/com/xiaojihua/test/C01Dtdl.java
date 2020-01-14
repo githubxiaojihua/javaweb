@@ -50,7 +50,7 @@ public class C01Dtdl {
         UserForDtdl userProxy = (UserForDtdl) Proxy.newProxyInstance(user.getClass().getClassLoader(),
                 user.getClass().getInterfaces(), new InvocationHandler() {
                     //增强的业务
-                    // 参数一: 固定值
+                    // 参数一: 固定值，代理类对象
                     // 参数二: 要增强的方法 (原有的方法)
                     // 参数三: 方法运行时候需要的参数
                     @Override
@@ -89,7 +89,7 @@ public class C01Dtdl {
             // 参数一: 代理对象的类型 固定值
             // 参数二: 目标类要增强的方法
             // 参数三: 方法运行时期需要的参数
-            // 参数四: 代理方法 忽略
+            // 参数四: 增强方法的代理对象 忽略
             @Override
             public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
                 if("delete".equals(method.getName())){

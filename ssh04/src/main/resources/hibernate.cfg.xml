@@ -34,6 +34,8 @@
         <!-- 配置和当前线程绑定的session进行开启配置
              注意：当将hibernate与spring集成以后并且开启了spring的事物管理
              需要将下面的这一句注销，否则会引起冲突
+             会报错：
+             org.hibernate.HibernateException: Calling method 'save' is not valid without an active transaction (Current status: NOT_ACTIVE)
         -->
         <!--<property name="hibernate.current_session_context_class">thread</property>-->
 

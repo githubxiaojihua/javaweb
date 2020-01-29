@@ -103,4 +103,9 @@ public class Demo {
         // 关闭资源
         em.close();
     }
+
+    @Test
+    public void test5(){
+        System.out.println(void.class);
+    }
 }

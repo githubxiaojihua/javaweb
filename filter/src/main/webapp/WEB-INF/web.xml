@@ -4,7 +4,7 @@
 
   <servlet>
       <servlet-name>demo1Servlet</servlet-name>
-      <servlet-class>com.xiaojihua.servlet.AjaxJqueryDemo1Servlet</servlet-class>
+      <servlet-class>com.xiaojihua.servlet.Demo1Servlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>demo1Servlet</servlet-name>

@@ -15,7 +15,7 @@ public class CustomerDemoHQL {
     @Test
     public void test1()
     {
-        Session session = HibernateUtils.openSession();
+            Session session = HibernateUtils.openSession();
         Transaction tx = session.beginTransaction();
 
         Customer customser = session.get(Customer.class, 3L);

@@ -30,9 +30,9 @@ public  class Customer
 	private String cust_phone;// '客户联系电话',
 	 
 	 // 有一个联系人的集合
-	 // 配置1对多的关系
-	 // targetEntity: 对方的字节码文件类型
-	 // mappedBy:自己在对方中的属性名    出现哪一方 意味着哪一方不会去维护外键了
+	 //	 // 配置1对多的关系
+	 //	 // targetEntity: 对方的字节码文件类型
+	 //	 // mappedBy:自己在对方中的属性名    出现哪一方 意味着哪一方不会去维护外键了
 	 	/*cascade
 	 		  CascadeType.All 即使级联保存 又是级联删除         save-update,delete
 	 		  CascadeType.PERSIST 级联保存		 	    save-update

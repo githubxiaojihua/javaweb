@@ -7,8 +7,8 @@
     
     <class name="com.xiaojihua.domain.Customer" table="cst_customer">
         <id name="cust_id" column="cust_id">
-            <generator class="native"/>
-        </id>
+        <generator class="native"/>
+    </id>
 
         <property name="cust_name" column="cust_name"></property>
         <property name="cust_source" column="cust_source"></property>
@@ -28,7 +28,7 @@
                       false 不使用延迟加载 立即加载
          -->
         <set name="linkmans" inverse="true" cascade="save-update,delete" lazy="false">
-            <!-- 外键的字段名 -->
+            <!-- 在多的一方的表中的外键的字段名 必须的-->
             <key column="wj_id"></key>
             <!-- class:多的一方的全限定名  -->
             <one-to-many class="com.xiaojihua.domain.Linkman"></one-to-many>

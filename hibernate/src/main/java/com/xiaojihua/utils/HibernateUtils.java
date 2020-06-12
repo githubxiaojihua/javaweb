@@ -21,6 +21,7 @@ public class HibernateUtils {
 
     // 从当前线程中获取绑定的session
     // 好处: 在多层之间调用方法获取的都是同一个session
+    // 重要的是线程安全
     public static Session getCurrentSession()
     {
 			/*特点: 1 默认是关闭的 需要配置开启

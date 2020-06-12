@@ -49,10 +49,10 @@ public class Dome1 {
 
         //操作
         Customer customer = new Customer();
-        customer.setCust_name("马总");
+        customer.setCust_name("马总222");
 
         Linkman  linkman = new Linkman();
-        linkman.setLkm_name("小秘");
+        linkman.setLkm_name("小秘222");
 
         customer.getLinkmans().add(linkman);
         linkman.setCustomer(customer);

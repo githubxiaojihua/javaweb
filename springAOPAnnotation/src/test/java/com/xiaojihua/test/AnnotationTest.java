@@ -30,4 +30,14 @@ public class AnnotationTest {
         person.update();
         System.out.println(person);
     }
+
+    @Test
+    public void testArgs(){
+        person.testArgs("zhangsan",12);
+    }
+
+    @Test
+    public void testAnno(){
+        person.testAnnotation("zhangsan",12);
+    }
 }

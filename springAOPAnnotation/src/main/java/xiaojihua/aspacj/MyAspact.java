@@ -3,6 +3,8 @@ package xiaojihua.aspacj;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
+import xiaojihua.annotation.NeedTest;
+import xiaojihua.domain.Person;
 
 /**
  * 定义一个切面类
@@ -56,4 +58,27 @@ public class MyAspact {
     public void afterMethod(){
         System.out.println("--不管你有没有异常,我都出来了---");
     }
+
+
+    //=============测试增强函数的参数绑定
+    @Before("execution(* xiaojihua.domain.Person.testArgs(..)) && args(name,num,..)")
+    public void testArgs(int num, String name){
+        System.out.println("in before advice====================");
+        System.out.println("name:" + name);
+        System.out.println("num:" + num);
+    }
+
+    /*@After("@annotation(anno)")
+    public void testArgs(NeedTest anno){
+        System.out.println("in after advice====================");
+        System.out.println(anno.value());
+    }*/
+
+    @Before(value="target(bean) && @annotation(anno)",argNames="anno,bean")
+    public void testArgNames(NeedTest anno,Person bean){
+        System.out.println("in testArgNames advice====================");
+        System.out.println(bean);
+        System.out.println(anno.value());
+    }
+
 }

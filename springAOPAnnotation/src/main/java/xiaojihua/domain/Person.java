@@ -1,6 +1,7 @@
 package xiaojihua.domain;
 
 import org.springframework.stereotype.Component;
+import xiaojihua.annotation.NeedTest;
 
 import java.sql.SQLException;
 
@@ -32,5 +33,22 @@ public class Person
 		System.out.println("普通的查询方法...");
 		
 		
+	}
+
+	public void testArgs(String name,int num){
+		System.out.println("intestArgs=====");
+		System.out.println("name:" + name);
+		System.out.println("num:" + num);
+	}
+
+	@NeedTest("needTest")
+	public void testAnnotation(String name,int num){
+		System.out.println("intestArgs=====");
+		System.out.println("name:" + name);
+		System.out.println("num:" + num);
+	}
+
+	public String toString(){
+		return "Person to String";
 	}
 }
